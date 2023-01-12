@@ -1,0 +1,45 @@
+*,*::before,*::after{
+  box-sizing: border-box;
+}
+a{text-decoration: none;}
+
+html{
+  font-size: 10px;
+}
+
+body{
+  margin: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  min-height: 100vh;
+}
+
+.nav-bar{
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+  background-color: rgb(0, 90, 117);
+}
+
+a.nav-bar__item{
+  color: white;
+  padding: 1.5rem 3rem;
+}
+a.nav-bar__item:hover{
+  color: rgb(212, 216, 0);
+}
+.nav-bar__item--active{
+  background-color: rgb(0, 59, 77);
+}
+
+@media screen and (max-width:767px){
+  .nav-bar{
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  a.nav-bar__item{
+    width:100%;
+    text-align: center;
+  }
+}

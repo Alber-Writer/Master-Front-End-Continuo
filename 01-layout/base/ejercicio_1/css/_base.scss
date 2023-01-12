@@ -1,0 +1,24 @@
+$baseColorA: red;
+$baseColorB: blue;
+$baseColorC: green;
+
+@mixin darkAndLightColors($steps: 4, $baseColor: black) {
+  & .base-color{
+    background-color: $baseColor;
+    color: white;
+    width: 150px;
+  }
+  @while $steps >=1 {
+    & .darken-#{$steps} {
+      background-color: darken($baseColor, 5*$steps);
+      color: invert($baseColor);
+    }
+
+    & .lighten-#{$steps} {
+      background-color: lighten($baseColor, 5*$steps);
+      color: invert($baseColor)
+    }
+
+    $steps: $steps - 1;
+  }
+}

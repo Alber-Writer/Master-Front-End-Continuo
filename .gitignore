@@ -1,0 +1,8 @@
+#Ignore contents from folder: ignore
+**/ignore/*
+
+#SASS cache
+**/.cache/**
+
+# node_modules
+**/node_modules/**

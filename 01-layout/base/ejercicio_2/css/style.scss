@@ -1,0 +1,86 @@
+/* @use "theme-green" as *; */
+@use "theme-blue" as *;
+
+*,*::before,*::after{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: $baseFontSize;
+}
+
+body{
+  margin: 0;
+  display: flex;
+  font-family: $principalFont;
+  font-size: 1.6rem;
+  gap:5rem;
+  min-height: 100vh;
+  background: $baseColor;
+}
+
+.container{
+  display: grid;
+  width: 100vw;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "header header header"
+  "important important important"
+  ". . warning"
+  "articles articles articles";
+  justify-content: center;
+}
+
+.header{
+  grid-area: header;
+  background-color: darken($baseColor,30%);
+  font-size: 3rem;
+  color: white;
+  padding: 1.5rem 3rem;
+}
+.important{
+  grid-area: important;
+  padding: 1rem 3rem;
+  background-color: $importantColor;
+  font-family: $secondaryFont;
+  color: white;
+  font-size: 1.5rem;
+}
+.warning{
+  grid-area: warning;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  background-color: $warningColor;
+  font-family: $secondaryFont;
+  color:white;
+}
+.articles{
+  grid-area: articles;
+  & .article{
+    margin: 3rem 6rem;
+    padding: 3rem;
+    box-shadow: $shadow;
+    background-color: fade-out(white, 0.8);
+    &__title{
+      font-size: 2.4rem;
+      padding: 0;
+      margin: 1rem 0 1rem
+    };
+    &__p{
+      padding: 0;
+    }
+  }
+  & a{
+    font-family: $secondaryFont;
+    display: block;
+    padding: 1rem 0;
+    &:hover{
+      color: $warningColor;
+    }
+    &:visited{
+      color: $warningColor;
+    }
+    
+  }
+}

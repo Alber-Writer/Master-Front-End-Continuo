@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@200;400&display=swap');
+
+$baseFontSize: 12px;
+$baseColor: rgb(152, 255, 174);
+$importantColor: darken($baseColor, 50);
+$warningColor: invert($baseColor);
+$principalFont: 'Raleway', Arial;
+$secondaryFont: 'Lato', Helvetica, sans-serif;
+$shadow: 4px 8px 1px 0px rgb(darken($baseColor,50), 0.2);

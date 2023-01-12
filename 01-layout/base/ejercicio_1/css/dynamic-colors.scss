@@ -1,0 +1,49 @@
+@use "base";
+
+*,*::before,*::after{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 10px;
+}
+
+body{
+  margin: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  gap:5rem;
+  min-height: 100vh;
+}
+
+.container{
+  display: flex;
+  flex-flow: row wrap;
+  width: 90vw;
+  justify-content: center;
+  margin-top: 2rem;
+  gap:10px;
+  &__box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    text-align: center;
+  }
+}
+
+#group-A{
+  @include base.darkAndLightColors(4, base.$baseColorA)
+}
+#group-B{
+  @include base.darkAndLightColors(4, base.$baseColorB)
+}
+#group-C{
+  @include base.darkAndLightColors(4, base.$baseColorC)
+}
