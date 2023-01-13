@@ -21,7 +21,7 @@ body {
   font-size: 1.8rem;
   min-height: 100vh;
   color: $firstTextColor;
-  background-color: azure;
+  background-color: $fourthColor;
   font-family: $principalFont;
 }
 
@@ -40,7 +40,8 @@ header {
       align-self: center;
       color: $secondTextColor;
     }
-    @media screen and (max-width:768px){
+
+    @media screen and (max-width:768px) {
       display: none;
     }
   }
@@ -58,25 +59,24 @@ header {
   display: flex;
   width: 100%;
   flex-grow: 1;
-  flex-flow: row nowrap;
-  @media screen and (max-width:768px){
-    flex-flow: row wrap;
-  }
+  flex-flow: row wrap;
+  position: relative;
+  align-items: stretch;
 
   & nav {
-    top: 0px;
-    left: 0;
-    position: relative;
+    position: sticky;
+    top: 0;
+    width: 22%;
+    height: fit-content;
+
     background-color: $fourthColor;
-    @media screen and (max-width:768px){
+
+    @media screen and (max-width:768px) {
       flex-basis: 100%;
     }
 
-
     & .menu-container {
-      top: 0;
-      left:0;
-      position: sticky;
+
       font-family: $secondaryFont;
 
       & .menu-title {
@@ -86,7 +86,7 @@ header {
         font-size: 2rem;
         font-weight: bold;
         padding: 1em;
-        @media screen and (max-width:768px){
+        @media screen and (max-width:768px) {
           display: none;
         }
       }
@@ -94,10 +94,11 @@ header {
       & ul {
         margin: 0;
         padding: 0;
-        @media screen and (max-width:768px){
+
+        @media screen and (max-width:768px) {
           display: flex;
           flex-flow: row nowrap;
-          justify-content:space-around;
+          justify-content: space-around;
           padding: 1rem;
         }
       }
@@ -110,18 +111,22 @@ header {
         margin-bottom: 2px;
         cursor: pointer;
         transition: ease-in 200ms;
+
         &:hover {
           background-color: $firstColor;
           padding-left: 2rem;
-          @media screen and (max-width:768px){
+
+          @media screen and (max-width:768px) {
             padding-left: 1em;
           }
         }
-        @media screen and (max-width:768px){
+
+        @media screen and (max-width:768px) {
           flex-basis: 90px;
           text-align: center;
         }
-        @media screen and (max-width:413px){
+
+        @media screen and (max-width:413px) {
           flex-basis: 60px;
           text-align: center;
         }
@@ -131,13 +136,15 @@ header {
 
   & main {
     background-color: $secondColor;
+    flex-basis: 75%;
+    flex-grow: 1;
 
     & .list {
       display: flex;
       flex-flow: row wrap;
       justify-content: space-evenly;
       padding: 3rem 2rem;
-      gap: 2rem;
+      gap: 4rem 2rem;
 
       & .card {
         background-color: white;
@@ -149,16 +156,19 @@ header {
         align-items: center;
         cursor: pointer;
         transition: ease-in 200ms;
-        &:hover{
+
+        &:hover {
           transform: scale(1.05);
           background-color: $firstColor;
         }
-        @media screen and (max-width:768px){
+
+        @media screen and (max-width:768px) {
           flex-basis: 85%;
           justify-content: center;
           gap: 3rem;
         }
-        @media screen and (max-width:413px){
+
+        @media screen and (max-width:413px) {
           flex-basis: 100%;
           justify-content: center;
           gap: 3rem;
@@ -177,12 +187,17 @@ header {
           margin: 1em 1rem 0 2rem;
           padding: 0;
           flex-grow: 1;
-          @media screen and (max-width:768px){
+
+          @media screen and (max-width:768px) {
             flex-grow: 0;
             flex-basis: 40%;
           }
         }
       }
+    }
+
+    @media screen and (max-width:768px) {
+      flex-basis: 100%;
     }
   }
 }
