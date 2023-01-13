@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:ital@0;1&display=swap');
+
+$principalFont: 'Roboto',Arial, Helvetica, sans-serif;
+$secondaryFont: 'Roboto Slab', Times;
+
+$firstColor: rgb(202, 224, 0);
+$secondColor: rgb(229, 231, 216);
+$thridColor: lighten($firstColor, 40);
+$fourthColor: desaturate($firstColor, 60);
+$firstTextColor: black;
+$secondTextColor: gray;
+
+@mixin flexBetweenX() {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}

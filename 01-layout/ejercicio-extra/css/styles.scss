@@ -1,0 +1,198 @@
+@use "base" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  align-items: center;
+  justify-content: stretch;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  min-height: 100vh;
+  color: $firstTextColor;
+  background-color: azure;
+  font-family: $principalFont;
+}
+
+header {
+  width: 100%;
+
+  & .toolbar {
+    @include flexBetweenX();
+    background-color: white;
+    padding: 1rem 2rem;
+    width: 100%;
+
+    & .user {
+      display: inline-block;
+      font-size: 1.5rem;
+      align-self: center;
+      color: $secondTextColor;
+    }
+    @media screen and (max-width:768px){
+      display: none;
+    }
+  }
+
+  & .page-title {
+    background-color: $firstColor;
+    color: white;
+    font-size: 2.4rem;
+    font-family: $secondaryFont;
+    padding: 0.6em 2rem;
+  }
+}
+
+.page-container {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-flow: row nowrap;
+  @media screen and (max-width:768px){
+    flex-flow: row wrap;
+  }
+
+  & nav {
+    top: 0px;
+    left: 0;
+    position: relative;
+    background-color: $fourthColor;
+    @media screen and (max-width:768px){
+      flex-basis: 100%;
+    }
+
+
+    & .menu-container {
+      top: 0;
+      left:0;
+      position: sticky;
+      font-family: $secondaryFont;
+
+      & .menu-title {
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 1em;
+        @media screen and (max-width:768px){
+          display: none;
+        }
+      }
+
+      & ul {
+        margin: 0;
+        padding: 0;
+        @media screen and (max-width:768px){
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content:space-around;
+          padding: 1rem;
+        }
+      }
+
+      & li.menu__item {
+        background-color: $thridColor;
+        list-style: none;
+        font-size: 1.4rem;
+        padding: 1em;
+        margin-bottom: 2px;
+        cursor: pointer;
+        transition: ease-in 200ms;
+        &:hover {
+          background-color: $firstColor;
+          padding-left: 2rem;
+          @media screen and (max-width:768px){
+            padding-left: 1em;
+          }
+        }
+        @media screen and (max-width:768px){
+          flex-basis: 90px;
+          text-align: center;
+        }
+        @media screen and (max-width:413px){
+          flex-basis: 60px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  & main {
+    background-color: $secondColor;
+
+    & .list {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      padding: 3rem 2rem;
+      gap: 2rem;
+
+      & .card {
+        background-color: white;
+        flex-basis: 300px;
+        text-align: center;
+        padding: 2rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: ease-in 200ms;
+        &:hover{
+          transform: scale(1.05);
+          background-color: $firstColor;
+        }
+        @media screen and (max-width:768px){
+          flex-basis: 85%;
+          justify-content: center;
+          gap: 3rem;
+        }
+        @media screen and (max-width:413px){
+          flex-basis: 100%;
+          justify-content: center;
+          gap: 3rem;
+        }
+      }
+
+      & .item {
+        & img {
+          border-radius: 100%;
+          border: 3px solid white;
+          outline: 5px solid $firstColor;
+        }
+
+        & .member-name {
+          font-size: 1.8rem;
+          margin: 1em 1rem 0 2rem;
+          padding: 0;
+          flex-grow: 1;
+          @media screen and (max-width:768px){
+            flex-grow: 0;
+            flex-basis: 40%;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $thridColor;
+  padding: 1em 2rem;
+  font-size: 1.5rem;
+  width: 100%;
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+}
