@@ -1,0 +1,225 @@
+@use "base" as *;
+
+*,*::before,*::after{
+  box-sizing: border-box;
+  cursor:default;
+}
+
+html{
+  font-size: 10px;
+}
+
+body{
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  min-height: 100vh;
+  color:$primaryColor;
+  font-family: $primaryFont;
+  position: relative;
+  background: linear-gradient(-45deg, $bgColor, rgb(9, 88, 174),rgb(70, 143, 226) );
+	background-size: 400% 400%;
+	animation: gradient 8s ease infinite;
+}
+
+
+.header{
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  position: sticky;
+  top:0;
+  z-index: 9;
+  background: linear-gradient(180deg, $bgColor, rgba(0, 33, 104, 0.0));
+  backdrop-filter: blur(10px);
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  gap:10px;
+  &__logo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &__img{
+      max-width: 120px;
+      @media screen and (max-width:980px) {
+        max-width: 80px;
+      }
+      @media screen and (max-width:540px) {
+        max-width: 65px;
+      }
+    }
+  }
+  &__platform-title{
+    font-size: 3rem;
+    margin-left: 2rem;
+  }
+  &__menu{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap:4rem;
+    transition: all 200ms ease-in-out;
+    &__btn{
+      font-size:2rem;
+      padding: 1.5rem 1rem;
+      border-radius:5px;
+      &:hover{
+        background-color: white;
+        color: $bgColor;
+      }
+      @media screen and (max-width:540px) {
+        font-size: 1.6rem;
+        padding: 1rem 0.5rem;
+      }
+    }
+    @media screen and (max-width:540px) {
+      gap:2rem;
+    }
+  }
+  @media screen and (max-width:540px) {
+    padding: 1.5rem 2.5rem;
+  }
+}
+
+.contents{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  &__title{
+    font-size: 2.3rem;
+    &--top-text{
+      font-weight: bold;
+      &::after{
+        content: counter(topCounter);
+        color:rgb(221, 178, 61);
+        font-size: 1.2em;        
+      }
+    }
+    @media screen and (max-width:768px) {
+      margin: 2rem 0 1rem;
+      border-bottom: 1px solid rgb(221, 178, 61);     
+    }
+  }
+  &__top{
+    counter-reset: topCounter;
+    display: flex;
+    flex-grow: 1.5;
+    flex-flow: row-reverse wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .top__item{
+    counter-increment: topCounter;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 18%;
+    text-align: center;
+    position: relative;
+    transition: all 200ms ease-in-out;
+    &:hover{
+      flex-basis: 22%;
+    }
+    &__img{
+      max-width: 100%;
+      height: auto;
+    }
+    &__number{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-weight: bold;
+      text-shadow: 8px 6px 0px rgb(221, 178, 61), 16px 12px 0px rgb(156, 124, 36);
+      z-index: -1;
+      transform: translate(-85%,-50%);
+      @media screen and (min-width:1280px) {
+        font-size: min(17vw,34rem);
+      }
+      @media screen and (max-width:1279px) {
+        font-size: max(24vw,28rem);
+      }
+      @media screen and (max-width:980px) {
+        font-size: max(26vw,22rem);
+      }
+      @media screen and (max-width:768px) {
+        font-size: max(42vw, 25rem);
+      }
+      @media screen and (max-width:540px) {
+        font-size: max(38vw, 22rem);
+      }
+      @media screen and (max-width:480px) {
+        font-size: min(62vw, 60rem);
+      }
+      
+    }
+    @media screen and (min-width:1281px) {
+      aspect-ratio: 5/ 1 auto;
+    }
+    @media screen and (max-width:1280px) {
+      min-width: 225px;
+    }
+    @media screen and (max-width:768px) {
+      flex-basis: 50%;
+    }
+  }
+  &__section{
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    min-height: 150px;
+    .section__item{
+      flex-basis: 14%;
+      flex-grow: 1;
+      flex-shrink: 1;
+      transition: all 200ms ease-in-out;
+      text-align: center;
+      &:hover{
+        flex-basis: 18%;
+      }
+      &__img{
+        max-width: 100%;
+        height: auto;
+      }
+      @media screen and (min-width:1280px) {
+        aspect-ratio: 8/ 1 auto;
+      }
+      @media screen and (max-width:1280px) {
+        min-width: 250px;
+      }
+      
+    }
+  }
+}
+/*Ajuste para poder utilizar "counter" de CSS en el título de la sección. 
+La etiqueta que mostrará el número de counter ha de ir DESPUÉS de los items en el HTML*/
+.order-1{
+  order: -1;
+}
+
+.only-desk{
+  @media screen and (max-width:1280px) {
+    display: none;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
