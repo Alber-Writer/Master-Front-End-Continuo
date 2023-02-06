@@ -1,0 +1,22 @@
+{
+  "name": "01-layout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ej-1": "parcel ./base/ejercicio_1/paleta_color.html",
+    "ej-2": "parcel ./base/ejercicio_2/themes.html",
+    "ej-3": "parcel ./base/ejercicio_3/flexbox-menu.html",
+    "ej-4": "parcel ./base/ejercicio_4/grid-cards.html",
+    "ej-extra": "parcel ./ejercicio-extra/index.html",
+    "reto--warner-live": "parcel ./reto--warner-live/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "parcel": "^2.8.3",
+    "sass": "^1.58.0"
+  }
+}
