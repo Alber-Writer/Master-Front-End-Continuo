@@ -1,0 +1,12 @@
+$back-color: #bbd1d8;
+
+body{
+  margin: 0;
+  background-color: $back-color;
+}
+.red-bg{
+  background-color: indianred;
+  font-weight: bold;
+  padding: 15px;
+  border: 1px solid black;
+}
