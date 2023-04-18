@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node,sass
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,sass
+# Created by https://www.toptal.com/developers/gitignore/api/node
+# Edit at https://www.toptal.com/developers/gitignore?templates=node
 
 ### Node ###
 # Logs
@@ -141,15 +141,6 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-### Sass ###
-.sass-cache/
-*.css.map
-*.sass.map
-*.scss.map
+# End of https://www.toptal.com/developers/gitignore/api/node
 
-# End of https://www.toptal.com/developers/gitignore/api/node,sass
-
-#Ignore contents from folders: ignore, .vscode
 ignore/
-.vscode/
-transpiled/
