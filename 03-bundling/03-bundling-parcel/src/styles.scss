@@ -1,0 +1,19 @@
+$bg: white;
+
+body{
+  box-sizing: border-box;
+  background-color: $bg;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 30px;
+  min-height: 100vh;
+}
+.base{
+  margin: 0;
+}
+
