@@ -1,3 +1,6 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+}
 body {
   font-family: sans-serif;
   display: flex;
@@ -48,5 +51,40 @@ a.nav__link{
   border-radius: 3px;
 }
 a.nav__link:hover{
-  background-color: #424242;
+  background-color: rgb(145, 93, 93);
+}
+a.nav__link--current, a.nav__link--current:hover{
+  background-color: indianred;
+}
+#pagination{
+  font-size: 0.8rem;
+  width: 400px;
+  height: min-content;
+  display: flex;
+  gap:10px;
+  align-items: center;
+}
+#pagination a{
+  text-decoration: none;
+  font-weight: bold;
+}
+#seasonsMenu{
+  font-size: 0.75rem;
+  width: 400px;
+  height: min-content;
+  display: flex;
+  gap:10px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+a.seasonsMenu__a{
+  padding: 10px;
+  background-color: #666;
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+}
+a.seasonsMenu__a--current{
+  background-color: #2b2b2b!important;
+  color: white;
 }

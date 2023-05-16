@@ -53,4 +53,9 @@ const createParagraph = (text) => {
   return element;
 };
 
-export { createCharacterRow, showCharacter };
+const fillRange = (start, end = start) => [...Array((end + 1) - start).keys()]
+  .reduce((acc, current) => acc = [...acc, current + start], []);
+
+
+
+export { createCharacterRow, showCharacter, fillRange };
