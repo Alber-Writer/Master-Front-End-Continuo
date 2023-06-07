@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+h3.welcome{
+  width: max-content;
+  width: 100%;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+  // background-color: indianred;
+}

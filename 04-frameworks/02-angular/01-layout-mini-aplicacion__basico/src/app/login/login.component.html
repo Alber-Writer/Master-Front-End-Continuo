@@ -1,0 +1,26 @@
+<form (ngSubmit)="checkCredentials()" #loginForm="ngForm">
+  <input
+  name="user"
+  [(ngModel)] = "username"
+  [placeholder]="username"
+  type="text"
+  required #usernameInput="ngModel"
+  />
+  <div *ngIf="usernameInput.invalid && usernameInput.touched" class="feedback">User required</div>
+  <div *ngIf="usernameInput.errors?.['minlength']" class="feedback">User must contain at least {{passwordInput.errors?.['minlength']?.['requiredLength']}} characters</div>
+  <input
+  name="password"
+  [(ngModel)] = "password"
+  [placeholder]="password"
+  type="password"
+  required
+  #passwordInput="ngModel"
+  minlength="6"
+  />
+  <div *ngIf="passwordInput.invalid && passwordInput.touched" class="feedback">Password required</div>
+  <div *ngIf="passwordInput.errors?.['minlength']" class="feedback">Password must contain at least {{passwordInput.errors?.['minlength']?.['requiredLength']}} characters</div>
+
+  <button [disabled]="loginForm.invalid" type="submit">
+    Submit
+  </button>
+</form>
