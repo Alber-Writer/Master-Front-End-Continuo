@@ -1,1 +1,22 @@
-<p>gallery works!</p>
+<div class="gallery">
+  <div class="current-image">
+    <img [src]="currentImage.src" [alt]="currentImage.title" [title]="currentImage.title" [height]="currentHeight">
+  </div>
+  <div class="images-collection" >
+    <div class="image-container" *ngFor="let image of imagesGallery; let i = index">
+      <!-- [ngClass]="{'selected':i===currentIndex}" SI INDEX=variable Aplica la clase!-->
+      <img id="img_{{i}}" [ngClass]="{'selected':i===currentIndex}" [src]="image.src" [alt]="image.title" [title]="image.title" width="100" [attr.data-img-id]="image.id" (click)="selectedAsCurrent($event)">
+    </div>
+  </div>
+  <div class="controls">
+    <!-- <button id="prev" (click)="prevImg()">prev</button>
+    <button id="next" (click)="nextImg()">next</button> -->
+    <button id="prev" (click)="setCurrentImage(currentIndex - 1)">prev</button>
+    <button id="next" (click)="setCurrentImage(currentIndex + 1)">next</button>
+    <button id="zoom-in" (click)="zoomIn()">zoomIn</button>
+    <button id="zoom-out" (click)="zoomOut()">zoomOut</button>
+    <button id="play-btn" (click)="play()" *ngIf="!isPlaying">play</button>
+    <button id="stop-btn" (click)="stop()" *ngIf="isPlaying">stop</button>
+  </div>
+  {{currentIndex}}
+</div>
