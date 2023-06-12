@@ -19,13 +19,27 @@ export class GalleryComponent implements OnInit {
   isPlaying: boolean;
   startPlayerInterval: any;
   lastImage: number;
-  currentHeight:number;
+  currentHeight: number;
+  // pagination:
+  isPaginationActive:boolean;
+  paginateFrom: number;
+  paginateTo: number;
+  imgsPerPage: number;
+  currentPage: number;
+  lastPage: number;
 
   constructor(private galleryFeedService: GalleryFeedService) {
     this.isPlaying = false;
     this.startPlayerInterval;
     this.lastImage = 1;
-    this.currentHeight = 600;
+    this.currentHeight = 400;
+    //Pagination
+    this.isPaginationActive = true;//ver q pasa
+    this.imgsPerPage = 3;
+    this.paginateFrom = 0;
+    this.paginateTo = this.imgsPerPage;
+    this.currentPage = 0;
+    this.lastPage = 1;
   }
 
   ngOnInit(): void {
@@ -33,31 +47,20 @@ export class GalleryComponent implements OnInit {
       this.imagesGallery = [...data];
       this.setCurrentImage(0);
       this.lastImage = this.imagesGallery.length - 1;
+      this.lastPage = Math.floor(this.lastImage / this.imgsPerPage);
+
     });
   }
 
   setCurrentImage(position: number) {
+    if (position > 0 && position < this.lastImage) this.currentIndex = position;
+    if (position <= 0) this.currentIndex = 0;
+    if (position >= this.lastImage) this.currentIndex = this.lastImage;
 
-    //Controls button states and force accepted Index
-    const prevButton = this.manageClassFromId('prev');
-    const nextButton = this.manageClassFromId('next');
-    prevButton('remove', 'disabled');
-    nextButton('remove', 'disabled');
+    if(this.currentIndex === this.paginateTo) this.setCurrentPage(this.currentPage+1)
+    //if(this.currentIndex === this.paginateFrom && this.paginateFrom > 0) this.setCurrentPage(this.currentPage-1)
 
-    //intermediate index
-    if (position > 0 && position < this.lastImage) {
-      this.currentIndex = position;
-    }
-    //first index
-    if (position <= 0) {
-      prevButton('add', 'disabled');
-      this.currentIndex = 0;
-    }
-    if (position >= this.lastImage) {
-      nextButton('add', 'disabled');
-      this.currentIndex = this.lastImage;
-    }
-    //angular ya te da IDs...
+
     return (this.currentImage = { ...this.imagesGallery[this.currentIndex] });
   }
 
@@ -67,16 +70,6 @@ export class GalleryComponent implements OnInit {
       (el) => el['id'] === clickedId
     );
     this.setCurrentImage(position);
-  }
-
-  manageClassFromId(htmlId: string) {
-    const htmlElement = document.getElementById(htmlId);
-    return function (
-      operation: 'add' | 'remove' | 'toggle' = 'toggle',
-      className: string
-    ) {
-      htmlElement?.classList?.[operation](className);
-    };
   }
 
   play() {
@@ -97,12 +90,23 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  zoomIn(){
+  zoomIn() {
     this.currentHeight += 25;
   }
 
-  zoomOut(){
+  zoomOut() {
     this.currentHeight -= 25;
+  }
+  setCurrentPage(position: number) {
+    if (position <= 0) this.currentPage = 0;
+    if (position > 0 && position < this.lastPage) this.currentPage = position;
+    if (position >= this.lastPage) this.currentPage = this.lastPage;
+    this.paginateFrom = this.currentPage * this.imgsPerPage;
+    this.paginateTo = this.paginateFrom + this.imgsPerPage;
+    this.setCurrentImage(this.paginateFrom);
+  }
+  getIndexAtPage(){
+    return this.currentIndex - this.paginateFrom
   }
 }
 
@@ -123,8 +127,5 @@ export class GalleryComponent implements OnInit {
 // ### Remarcar con estilos css la imagen de la lista que corresponda con la imagen actualmente seleccionada
 //
 // Paginar el listado de imágenes. En vez de mostrar todas las imágenes de golpe, mostrarlas de 3 en 3. Añadir un botón Anterior y otro siguiente para avanzar o retroceder de “página” en el listado.
-//
 // Ayuda: La pipe slice trocea un array Ejemplo: En <img *ngFor="let image of images | slice:3:6" /> la pipe slice haría return de los elementos 3, 4 y 5 del array images.
-//
 // slice:0:3 => Empezaría en el 0 y terminaría en el 3 pero sin incluir el 3. slice:3:6 => Empezaría en el 3 y terminaría en el 6 pero sin incluir el 6. slice:6:9 => Empezaría en el 6 y terminaría en el 9 pero sin incluir el 9.
-

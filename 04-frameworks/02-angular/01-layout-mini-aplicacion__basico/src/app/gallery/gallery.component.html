@@ -2,21 +2,24 @@
   <div class="current-image">
     <img [src]="currentImage.src" [alt]="currentImage.title" [title]="currentImage.title" [height]="currentHeight">
   </div>
-  <div class="images-collection" >
-    <div class="image-container" *ngFor="let image of imagesGallery; let i = index">
+  <div class="images-collection">
+    <button id="prev-page" [ngClass]="{disabled:currentPage<=0}" (click)="setCurrentPage(currentPage-1)">Previous page</button>
+    <div class="image-container" *ngFor="let image of imagesGallery | slice:paginateFrom:paginateTo; let i = index">
       <!-- [ngClass]="{'selected':i===currentIndex}" SI INDEX=variable Aplica la clase!-->
-      <img id="img_{{i}}" [ngClass]="{'selected':i===currentIndex}" [src]="image.src" [alt]="image.title" [title]="image.title" width="100" [attr.data-img-id]="image.id" (click)="selectedAsCurrent($event)">
+      <img id="img_{{i}}" [ngClass]="{'selected':i===getIndexAtPage()}" [src]="image.src" [alt]="image.title"
+        [title]="image.title" width="100" [attr.data-img-id]="image.id" (click)="selectedAsCurrent($event)">
     </div>
+    <button id="next-page" [ngClass]="{disabled:currentPage>=lastPage}" (click)="setCurrentPage(currentPage+1)">Next page</button>
   </div>
   <div class="controls">
-    <!-- <button id="prev" (click)="prevImg()">prev</button>
-    <button id="next" (click)="nextImg()">next</button> -->
-    <button id="prev" (click)="setCurrentImage(currentIndex - 1)">prev</button>
-    <button id="next" (click)="setCurrentImage(currentIndex + 1)">next</button>
-    <button id="zoom-in" (click)="zoomIn()">zoomIn</button>
-    <button id="zoom-out" (click)="zoomOut()">zoomOut</button>
-    <button id="play-btn" (click)="play()" *ngIf="!isPlaying">play</button>
-    <button id="stop-btn" (click)="stop()" *ngIf="isPlaying">stop</button>
+    <button id="prev-image" [ngClass]="{disabled:currentIndex===0}" (click)="setCurrentImage(currentIndex - 1)">Prev</button>
+    <button id="next-image" [ngClass]="{disabled:currentIndex===lastImage}" (click)="setCurrentImage(currentIndex + 1)">Next</button>
+    <button id="zoom-in" (click)="zoomIn()">Zoom In</button>
+    <button id="zoom-out" (click)="zoomOut()">Zoom Out</button>
+    <button id="play-btn" (click)="play()" *ngIf="!isPlaying">Play all images</button>
+    <button id="stop-btn" (click)="stop()" *ngIf="isPlaying">Stop</button>
   </div>
-  {{currentIndex}}
+  <p>Page: {{currentPage+1}}/{{lastPage+1}}</p>
+  <p>{{currentIndex}}</p>
+  <p>Image-Index at page: {{getIndexAtPage()}}</p>
 </div>
