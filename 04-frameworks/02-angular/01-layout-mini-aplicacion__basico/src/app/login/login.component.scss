@@ -1,7 +1,39 @@
-.ng-invalid{
-  border: 1px solid darkred;
-}
-.feedback{
-  color: darkred;
+@use '@angular/material' as mat;
+
+$my-palette: mat.define-palette(mat.$indigo-palette);
+
+/*   mat.get-color-from-palette($my-palette);
+  color: mat.get-color-from-palette($my-palette, 'darker-contrast'); */
+
+.container {
+  min-width: 250px;
+  max-width: 1200px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .field{
+    min-width: 250px;
+    max-width: 960px;
+    font-size: 0.8rem;
+  }
+  .tcard{
+    margin-top: 1vh;
+    max-width: 980px;
+    background-color: mat.get-color-from-palette($my-palette)!important;
+    align-self: center;
+  }
+}
+
+.ng-invalid {
+  border: 1px solid mat.get-color-from-palette($my-palette);
+  ;
+}
+
+.feedback {
+  color: darkred;
+}

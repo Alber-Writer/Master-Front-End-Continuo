@@ -1,1 +1,23 @@
+@use '@angular/material' as mat;
 
+$my-palette: mat.define-palette(mat.$indigo-palette);
+$darker : mat.get-color-from-palette($my-palette, 'darker');
+
+
+.footer__firstline {
+  width: 100%;
+  background: $darker;
+  color: mat.get-color-from-palette($my-palette, 'darker-contrast');
+  font-size: 0.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  min-height: 4vh;
+  padding: 0.6rem 1.5rem;
+
+  p{
+    margin-bottom: 0;
+  }
+}

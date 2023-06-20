@@ -1,23 +1,33 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
 .container {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
   min-height: 100vh;
   width: 100%;
+  position: relative;
 
   header {
     width: 100%;
-    align-self: flex-start;
-    min-height: 20vh;
-  }
-  main{
-    width: 100%;
+    min-height: 8vh;
   }
 
-  footer {
-    background-color: indianred;
-    align-self: flex-end;
-    min-height: 3vh;
+  main{
+    max-width: 1200px;
+    flex-basis: 100%;
+    margin:0 auto;
+    padding: 1rem 1rem 5vh;
+    height: fit-content;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer{
     width: 100%;
+    margin-top: 0.6rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
   }
 }

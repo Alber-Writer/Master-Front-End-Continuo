@@ -20,6 +20,8 @@ import { CrudComponent } from './crud/crud.component';
 import { ProfileComponent } from './profile/profile.component';
 
 import { AuthService } from './services/auth.service';
+import { RotateImagesDirectiveComponent } from './rotate-images-directive/rotate-images-directive.component';
+import { RotateDirective } from './directives/rotate.directive';
 
 
 
@@ -38,13 +40,15 @@ import { AuthService } from './services/auth.service';
     GalleryComponent,
     CrudComponent,
     ProfileComponent,
+    RotateImagesDirectiveComponent,
+    RotateDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

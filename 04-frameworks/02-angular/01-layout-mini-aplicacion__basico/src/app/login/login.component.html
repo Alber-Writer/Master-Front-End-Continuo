@@ -1,26 +1,40 @@
-<form (ngSubmit)="checkCredentials()" #loginForm="ngForm">
-  <input
-  name="user"
-  [(ngModel)] = "username"
-  [placeholder]="username"
-  type="text"
-  required #usernameInput="ngModel"
-  />
-  <div *ngIf="usernameInput.invalid && usernameInput.touched" class="feedback">User required</div>
-  <div *ngIf="usernameInput.errors?.['minlength']" class="feedback">User must contain at least {{passwordInput.errors?.['minlength']?.['requiredLength']}} characters</div>
-  <input
-  name="password"
-  [(ngModel)] = "password"
-  [placeholder]="password"
-  type="password"
-  required
-  #passwordInput="ngModel"
-  minlength="6"
-  />
-  <div *ngIf="passwordInput.invalid && passwordInput.touched" class="feedback">Password required</div>
-  <div *ngIf="passwordInput.errors?.['minlength']" class="feedback">Password must contain at least {{passwordInput.errors?.['minlength']?.['requiredLength']}} characters</div>
+<div class="container">
 
-  <button [disabled]="loginForm.invalid" type="submit">
-    Submit
-  </button>
-</form>
+  <form (ngSubmit)="checkCredentials()" #loginForm="ngForm" class="form">
+    <mat-form-field class="field">
+      <mat-label>Username</mat-label>
+      <input matInput autocomplete="username" name="user" [(ngModel)]="username" [placeholder]="username" type="text"
+        required #usernameInput="ngModel" />
+
+      <mat-error *ngIf="usernameInput.invalid && usernameInput.touched" class="feedback">User required</mat-error>
+      <mat-error *ngIf="usernameInput.errors?.['minlength']" class="feedback">User must contain at least
+        {{usernameInput.errors?.['minlength']?.['requiredLength']}} characters</mat-error>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field class="field">
+      <mat-label>Password</mat-label>
+      <input matInput autocomplete="current-password" name="password" [(ngModel)]="password" [placeholder]="password"
+        type="password" required #passwordInput="ngModel" minlength="6" />
+
+      <mat-error *ngIf="passwordInput.invalid && passwordInput.touched" class="feedback">Password required</mat-error>
+      <mat-error *ngIf="passwordInput.errors?.['minlength']" class="feedback">Password must contain at least
+        {{passwordInput.errors?.['minlength']?.['requiredLength']}} characters</mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="loginForm.invalid" type="submit">
+      Submit
+    </button>
+    <!-- <mat-spinner></mat-spinner>-->
+  </form>
+
+  <mat-card class="tcard">
+    <mat-card-content>
+      <p>For this demo, use this user/password:</p>
+      <p>master8@lemoncode.net</p>
+      <p>12345678</p>
+    </mat-card-content>
+  </mat-card>
+
+</div>

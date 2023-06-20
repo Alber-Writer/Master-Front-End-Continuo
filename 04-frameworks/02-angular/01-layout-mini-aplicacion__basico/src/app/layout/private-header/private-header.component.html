@@ -1,12 +1,15 @@
 <div class="private-header">
-  <div class="logo">Logo | Header</div>
+  <div class="logo"><mat-icon>filter_hdr</mat-icon> FakeApp</div>
   <div class="login">
-    <em>
-      {{username}}
-    </em>
-    <em>-----</em>
+      <button mat-stroked-button class="user-chip">
+        <mat-icon color="primary-light">person</mat-icon>
+        <span>{{username}}</span>
+      </button>
+
     <div class="logout" (click)="logOut()">
-      Logout
+        <button mat-icon-button color="contrast" >
+        <mat-icon>logout</mat-icon>
+    </button>
     </div>
   </div>
 </div>

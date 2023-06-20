@@ -1,7 +1,20 @@
+@use '@angular/material' as mat;
+
+$my-palette: mat.define-palette(mat.$indigo-palette);
+
 .public-header{
   width: 100%;
-  background-color: aquamarine;
+  background: mat.get-color-from-palette($my-palette, 'darker');
+  color: mat.get-color-from-palette($my-palette, 'darker-contrast');
+
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+
+  padding: 10px;
+
+  .logo{
+    font-size: 1.3rem;
+    margin-left: 1rem;
+  }
 }

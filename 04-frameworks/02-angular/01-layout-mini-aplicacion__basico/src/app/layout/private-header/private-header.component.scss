@@ -1,7 +1,39 @@
-.private-header{
+@use '@angular/material' as mat;
+
+$my-palette: mat.define-palette(mat.$indigo-palette);
+
+
+.private-header {
   width: 100%;
-  background-color: rgb(100, 29, 231);
+  background: mat.get-color-from-palette($my-palette, 'darker');
+  color: mat.get-color-from-palette($my-palette, 'darker-contrast');
+
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  .logo{
+    font-size: 1.3rem;
+    margin-left: 1rem;
+  }
+
+  .user-chip{
+    background: mat.get-color-from-palette($my-palette);
+    color: mat.get-color-from-palette($my-palette, 'darker-contrast');
+    align-self: center;
+  }
+
+  .login {
+    display: flex;
+    gap: 1rem;
+  }
+  .logout{
+    display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  }
 }

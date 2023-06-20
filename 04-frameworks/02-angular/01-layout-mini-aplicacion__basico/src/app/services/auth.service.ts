@@ -36,7 +36,7 @@ export class AuthService {
     }
     return this.logged$.asObservable();
   }
-  /* Métodos cache localStorage solamente de prueba... sin token, son inseguros 100% : */
+  /* Métodos cache localStorage solamente de prueba... sin token, son inseguros: */
   private setCacheLogin() {
     localStorage.setItem('logged', `${this.logged$.value}`);
     localStorage.setItem('username', `${this.username$.value}`);

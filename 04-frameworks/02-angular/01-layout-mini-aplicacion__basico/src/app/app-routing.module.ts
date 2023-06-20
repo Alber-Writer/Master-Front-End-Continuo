@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { CrudComponent } from './crud/crud.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RotateImagesDirectiveComponent } from './rotate-images-directive/rotate-images-directive.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'gallery', component: GalleryComponent },
   { path: 'crud', component: CrudComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'rotate', component: RotateImagesDirectiveComponent },
 ];
 
 @NgModule({

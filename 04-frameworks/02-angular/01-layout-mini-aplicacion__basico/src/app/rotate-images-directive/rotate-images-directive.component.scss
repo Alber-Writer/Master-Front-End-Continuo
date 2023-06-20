@@ -1,0 +1,14 @@
+.images-container{
+  display: flex;
+  gap:2rem;
+
+  img{
+    margin: 2rem 0;
+  }
+
+  p{
+    font-size: 0.8rem;
+    margin: 0;
+    text-align: center;
+  }
+}
