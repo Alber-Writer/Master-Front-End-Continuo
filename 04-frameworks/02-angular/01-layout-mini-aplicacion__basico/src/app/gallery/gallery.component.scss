@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
-$my-palette: mat.define-palette(mat.$pink-palette);
-$accent : mat.get-color-from-palette($my-palette,);
+$indigo-p: mat.define-palette(mat.$pink-palette);
+$accent : mat.get-color-from-palette($indigo-p,);
 
 .gallery {
   width: 100%;
@@ -17,10 +17,20 @@ $accent : mat.get-color-from-palette($my-palette,);
     height: 400px;
     position: relative;
 
+    img#featured-image{
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media screen and (max-width:800px) {
+      max-width: 95%;
+      height: auto;
+    }
+
     .zoom-buttons{
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 15px;
+      right: 15px;
       display: flex;
       gap:0.7rem;
       mat-icon{
@@ -29,17 +39,54 @@ $accent : mat.get-color-from-palette($my-palette,);
     }
   }
 
-  .thumbs-container {
-    margin: 1rem;
-  }
-
   .images-collection {
     display: flex;
-    width: max-content;
+    width: 100%;
     flex-direction: row;
     align-items: center;
     align-content: center;
+    justify-content: center;
     flex-wrap: wrap;
+
+    .thumbs-container {
+      margin: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      order: 2;
+
+      img{
+        max-width: 100px;
+      }
+    }
+    #next-image{
+      order:3
+    }
+    #prev-image{
+      order: 1;
+    }
+
+     @media screen and (max-width:580px) {
+      max-width: 100%;
+      gap: 1rem;
+
+      #next-image{
+        order:2;
+        margin-top: 1rem;
+      }
+      #prev-image{
+        order: 1;
+        margin-top: 1rem;
+      }
+
+      .thumbs-container {
+        max-width: 100%;
+        flex-basis: 90%;
+        gap: 1rem;
+        order: 3;
+        margin: 1rem auto;
+      }
+     }
   }
 
   .selected {

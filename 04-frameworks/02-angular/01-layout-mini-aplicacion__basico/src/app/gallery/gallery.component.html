@@ -1,6 +1,6 @@
 <div class="gallery">
   <div class="current-image">
-    <img [src]="currentImage.src" [alt]="currentImage.title" [title]="currentImage.title" [height]="currentHeight">
+    <img id="featured-image" [src]="currentImage.src" [alt]="currentImage.title" [title]="currentImage.title">
     <div class="zoom-buttons">
       <button mat-mini-fab color="accent" id="zoom-in" (click)="zoomIn()">
         <mat-icon>zoom_in</mat-icon>
@@ -16,10 +16,9 @@
       (click)="setCurrentImage(currentIndex - 1)">
       <mat-icon style="margin-left: 10px;">arrow_back_ios</mat-icon>
     </button>
-    <div class="thumbs-container" *ngFor="let image of imagesGallery | slice:paginateFrom:paginateTo; let i = index">
-      <!-- [ngClass]="{'selected':i===currentIndex}" SI INDEX=VAR Aplica la clase!-->
-      <img id="img_{{i}}" [ngClass]="{'selected':i===getIndexAtPage()}" [src]="image.src" [alt]="image.title"
-        [title]="image.title" width="100" [attr.data-img-id]="image.id" (click)="selectedAsCurrent($event)">
+    <div class="thumbs-container">
+      <img *ngFor="let image of imagesGallery | slice:paginateFrom:paginateTo; let i = index" id="img_{{i}}" [ngClass]="{'selected':i===getIndexAtPage()}" [src]="image.src" [alt]="image.title"
+        [title]="image.title" [attr.data-img-id]="image.id" (click)="selectedAsCurrent($event)">
     </div>
     <button mat-mini-fab color="accent" id="next-image" [ngClass]="{disabled:currentIndex===lastImage}"
       (click)="setCurrentImage(currentIndex + 1)">

@@ -1,9 +1,7 @@
 @use '@angular/material' as mat;
 
-$my-palette: mat.define-palette(mat.$indigo-palette);
-
-/*   mat.get-color-from-palette($my-palette);
-  color: mat.get-color-from-palette($my-palette, 'darker-contrast'); */
+$indigo-p: mat.define-palette(mat.$indigo-palette);
+$warn-p: mat.define-palette(mat.$red-palette);
 
 .container {
   min-width: 250px;
@@ -16,24 +14,21 @@ $my-palette: mat.define-palette(mat.$indigo-palette);
   align-items: center;
   margin-bottom: 2rem;
 
-  .field{
+  .field {
     min-width: 250px;
     max-width: 960px;
     font-size: 0.8rem;
   }
-  .tcard{
-    margin-top: 1vh;
-    max-width: 980px;
-    background-color: mat.get-color-from-palette($my-palette)!important;
-    align-self: center;
+
+  .errors {
+    height: min-content;
   }
-}
 
-.ng-invalid {
-  border: 1px solid mat.get-color-from-palette($my-palette);
-  ;
-}
+  .feedback {
+    color: mat.get-color-from-palette($warn-p);
+  }
 
-.feedback {
-  color: darkred;
+  .spinner {
+    max-width: 2rem;
+  }
 }

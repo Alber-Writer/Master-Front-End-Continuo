@@ -10,20 +10,27 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: string;
   password: string;
-  constructor(private authService:AuthService, private router:Router) {
-    this.username = 'master8@lemoncode.net';
-    this.password = '12345678';
+  showSpinner: boolean;
+  constructor(private authService: AuthService, private router: Router) {
+    this.username = '';
+    this.password = '';
+    this.showSpinner = false;
   }
 
-  checkCredentials(){
-    const canAccess = this.authService.login(this.username, this.password);
-    if(canAccess){
-      this.router.navigate(['/dashboard']);
-      return true
-    }else {
-      alert("Incorrect user/password")
-      return false
-    }
-
+  checkCredentials() {
+    this.showSpinner = true;
+    this.authService.login$(this.username, this.password).subscribe((resp) => {
+      let canAccess;
+      this.showSpinner = false;
+      canAccess = resp;
+      if (canAccess) {
+        this.router.navigate(['/dashboard']);
+        return true;
+      } else {
+        alert(`Incorrect user/password.\n` +
+        `Please introduce valid credentials.`);
+        return false;
+      }
+    });
   }
 }

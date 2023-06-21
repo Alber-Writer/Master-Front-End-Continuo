@@ -1,18 +1,22 @@
-<h1 rotate="10" step="45">Rotate directive</h1>
-<p>Click on one image to rotate it!</p>
-<p>To rotate images counter-clockwise, hold SHIFT key while clicking each of them</p>
-<div class="images-container">
-  <div class="first-image">
-    <img rotate="10" step="20" src="/assets/gallery_imgs/01.webp" alt="Coast landscape" width="200" #firstImg>
-    <p>Initial rotation: {{firstImg.getAttribute("rotate")}} deg</p>
-    <p>Step per click: {{firstImg.getAttribute("step")}} deg</p>
-    <p>Current: {{firstImg.style.transform}} </p>
+<div class="container">
+
+  <h1 rotate="10" step="45">Rotate directive</h1>
+  <p>Click on one image to rotate it!</p>
+  <p>To rotate images counter-clockwise, hold SHIFT key while clicking each of them</p>
+  <div class="images-container">
+    <div class="first-image card">
+      <img rotate="10" step="20" src="/assets/gallery_imgs/01.webp" alt="Coast landscape" width="200" #firstImg>
+      <p>Initial rotation: {{firstImg.getAttribute("rotate")}} deg</p>
+      <p>Step per click: {{firstImg.getAttribute("step")}} deg</p>
+      <p>Current: {{firstImg.style.transform}} </p>
+    </div>
+
+    <div class="second-image card">
+      <img rotate src="./assets/gallery_imgs/02.webp" alt="Sea landscape" width="200" #secondImg>
+      <p>Initial rotation: 0 deg</p>
+      <p>Default step per click (10 deg)</p>
+      <p>Current: {{secondImg.style.transform}} </p>
+    </div>
   </div>
 
-  <div class="second-image">
-    <img rotate src="./assets/gallery_imgs/02.webp" alt="Sea landscape" width="200" #secondImg>
-    <p>Initial rotation: 0 deg</p>
-    <p>Default step per click (10 deg)</p>
-    <p>Current: {{secondImg.style.transform}} </p>
-  </div>
 </div>

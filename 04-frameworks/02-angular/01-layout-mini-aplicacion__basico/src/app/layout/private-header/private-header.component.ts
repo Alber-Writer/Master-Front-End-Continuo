@@ -19,8 +19,6 @@ export class PrivateHeaderComponent implements OnInit{
     this.router.navigate(['/home']);
   }
   ngOnInit(): void {
-    this.authService.getUsername$().subscribe(
-      data => this.username = data
-    )
+    this.username = this.authService.getUsername();
   }
 }

@@ -1,45 +1,43 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, delay, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private username$: BehaviorSubject<string> = new BehaviorSubject(
-    'not logged user'
-  );
+  private username: string = 'not logged user';
   private logged$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  getUsername$(): Observable<string> {
-    return this.username$.asObservable();
+  getUsername(): string {
+    return this.username;
   }
 
-  login(username: string, password: string): boolean {
+  login$(username: string, password: string): Observable<boolean> {
     if (username === 'master8@lemoncode.net' && password === '12345678') {
       this.logged$.next(true);
-      this.username$.next(username);
+      this.username = username;
       this.setCacheLogin();
-      return true;
+      return of(true).pipe(delay(2000));
     }
-    return false;
+    return of(false).pipe(delay(2000));
   }
   logout(): void {
     this.logged$.next(false);
-    this.username$.next('');
+    this.username = '';
     this.removeCacheLogin();
   }
   isLogged$(): Observable<boolean> {
     const [ logged, username ] = this.getCacheLogin();
     if(logged === 'true' && username){
       this.logged$.next(true);
-      this.username$.next(username);
+      this.username = username;
     }
     return this.logged$.asObservable();
   }
   /* Métodos cache localStorage solamente de prueba... sin token, son inseguros: */
   private setCacheLogin() {
     localStorage.setItem('logged', `${this.logged$.value}`);
-    localStorage.setItem('username', `${this.username$.value}`);
+    localStorage.setItem('username', `${this.username}`);
   }
   private getCacheLogin() {
     return [localStorage.getItem('logged'), localStorage.getItem('username')];

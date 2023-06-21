@@ -19,7 +19,7 @@ export class GalleryComponent implements OnInit {
   isPlaying: boolean;
   startPlayerInterval: any;
   lastImage: number;
-  currentHeight: number;
+  currentZoom: number;
   // pagination:
   paginateFrom: number;
   paginateTo: number;
@@ -31,7 +31,7 @@ export class GalleryComponent implements OnInit {
     this.isPlaying = false;
     this.startPlayerInterval;
     this.lastImage = 1;
-    this.currentHeight = 400;
+    this.currentZoom = 1;
     //Pagination
     this.imgsPerPage = 3;
     this.paginateFrom = 0;
@@ -87,11 +87,13 @@ export class GalleryComponent implements OnInit {
   }
 
   zoomIn() {
-    this.currentHeight += 25;
+    this.currentZoom += 0.25;
+    document.getElementById('featured-image')!.style.transform = `scale(${this.currentZoom})`;
   }
 
   zoomOut() {
-    this.currentHeight -= 25;
+    this.currentZoom -= 0.25;
+    document.getElementById('featured-image')!.style.transform = `scale(${this.currentZoom})`;
   }
   setCurrentPage(position: number, imgSelected:"first" | "last" = "first") {
     if (position <= 0) this.currentPage = 0;

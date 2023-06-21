@@ -1,39 +1,46 @@
 @use '@angular/material' as mat;
 
-$my-palette: mat.define-palette(mat.$indigo-palette);
-
+$indigo-p: mat.define-palette(mat.$indigo-palette);
 
 .private-header {
-  width: 100%;
-  background: mat.get-color-from-palette($my-palette, 'darker');
-  color: mat.get-color-from-palette($my-palette, 'darker-contrast');
+  max-width: 100%;
+  background: mat.get-color-from-palette($indigo-p, 'darker');
+  color: mat.get-color-from-palette($indigo-p, 'darker-contrast');
 
   display: flex;
   flex-flow: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
 
-  .logo{
+  .logo {
     font-size: 1.3rem;
     margin-left: 1rem;
-  }
-
-  .user-chip{
-    background: mat.get-color-from-palette($my-palette);
-    color: mat.get-color-from-palette($my-palette, 'darker-contrast');
-    align-self: center;
   }
 
   .login {
     display: flex;
     gap: 1rem;
+    max-width: 320px;
+
+    .user-chip {
+      background: mat.get-color-from-palette($indigo-p);
+      color: mat.get-color-from-palette($indigo-p, 'darker-contrast');
+      align-self: center;
+
+      @media screen and (max-width:480px) {
+        max-width: min-content;
+
+        mat-icon {
+          margin: 0 auto;
+        }
+
+        .username-text {
+          display: none;
+        }
+      }
+    }
   }
-  .logout{
-    display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  }
+
 }

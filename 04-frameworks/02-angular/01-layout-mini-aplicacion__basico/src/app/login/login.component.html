@@ -17,19 +17,21 @@
       <mat-label>Password</mat-label>
       <input matInput autocomplete="current-password" name="password" [(ngModel)]="password" [placeholder]="password"
         type="password" required #passwordInput="ngModel" minlength="6" />
+      <div class="errors">
+        <mat-error *ngIf="passwordInput.invalid && passwordInput.touched" class="feedback">Password required</mat-error>
+        <mat-error *ngIf="passwordInput.errors?.['minlength']" class="feedback">Password must contain at least
+          {{passwordInput.errors?.['minlength']?.['requiredLength']}} characters</mat-error>
+      </div>
 
-      <mat-error *ngIf="passwordInput.invalid && passwordInput.touched" class="feedback">Password required</mat-error>
-      <mat-error *ngIf="passwordInput.errors?.['minlength']" class="feedback">Password must contain at least
-        {{passwordInput.errors?.['minlength']?.['requiredLength']}} characters</mat-error>
     </mat-form-field>
 
-    <button mat-flat-button color="primary" [disabled]="loginForm.invalid" type="submit">
+    <button mat-flat-button color="accent" *ngIf="!showSpinner" [disabled]="loginForm.invalid" type="submit">
       Submit
     </button>
-    <!-- <mat-spinner></mat-spinner>-->
+    <mat-spinner class="spinner" *ngIf="showSpinner"></mat-spinner>
   </form>
 
-  <mat-card class="tcard">
+  <mat-card>
     <mat-card-content>
       <p>For this demo, use this user/password:</p>
       <p>master8@lemoncode.net</p>
