@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-$my-palette: mat.define-palette(mat.$indigo-palette);
+$indigo-p: mat.define-palette(mat.$indigo-palette);
 
 .container{
   display: flex;
@@ -17,6 +17,6 @@ h3.welcome{
   line-height: 120%;
   margin-bottom: 3rem;
   font-weight: bold;
-  color:  mat.get-color-from-palette($my-palette)
+  color:  mat.get-color-from-palette($indigo-p)
 
 }

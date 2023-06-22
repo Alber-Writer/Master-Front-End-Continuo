@@ -1,43 +1,57 @@
 <div class="gallery">
-  <div class="current-image">
-    <img id="featured-image" [src]="currentImage.src" [alt]="currentImage.title" [title]="currentImage.title">
+
+  <div class="featured-image-section">
+    <img id="featured-image" [src]="featuredImage.src" [alt]="featuredImage.title" [title]="featuredImage.title">
+
     <div class="zoom-buttons">
-      <button mat-mini-fab color="accent" id="zoom-in" (click)="zoomIn()">
+      <button mat-mini-fab color="accent" id="zoom-in" (click)="setZoom(0.25)">
         <mat-icon>zoom_in</mat-icon>
       </button>
-      <button mat-mini-fab color="accent" id="zoom-out" (click)="zoomOut()">
+
+      <button mat-mini-fab color="accent" id="zoom-out" (click)="setZoom(-0.25)">
         <mat-icon>zoom_out</mat-icon>
       </button>
+      <mat-chip class="zoom-level" color="accent">Zoom: {{currentZoom*100}}%</mat-chip>
     </div>
-
   </div>
+
   <div class="images-collection">
     <button mat-mini-fab color="accent" id="prev-image" [ngClass]="{disabled:currentIndex===0}"
-      (click)="setCurrentImage(currentIndex - 1)">
+      (click)="setFeaturedItem(currentIndex - 1)">
       <mat-icon style="margin-left: 10px;">arrow_back_ios</mat-icon>
     </button>
+
     <div class="thumbs-container">
-      <img *ngFor="let image of imagesGallery | slice:paginateFrom:paginateTo; let i = index" id="img_{{i}}" [ngClass]="{'selected':i===getIndexAtPage()}" [src]="image.src" [alt]="image.title"
-        [title]="image.title" [attr.data-img-id]="image.id" (click)="selectedAsCurrent($event)">
+      <a *ngFor="let image of itemCollection | slice:paginateFrom:paginateTo; let i = index" id="img_{{i}}"
+        [ngClass]="{'selected':i===getItemIndexAtCurrentPage()}">
+        <img  [src]="image.src" [alt]="image.title"
+        [title]="image.title" [attr.data-img-id]="image.id" (click)="selectAsCurrent($event, 'data-img-id')">
+      </a>
     </div>
-    <button mat-mini-fab color="accent" id="next-image" [ngClass]="{disabled:currentIndex===lastImage}"
-      (click)="setCurrentImage(currentIndex + 1)">
+
+    <button mat-mini-fab color="accent" id="next-image" [ngClass]="{disabled:currentIndex===lastItem}"
+      (click)="setFeaturedItem(currentIndex + 1)">
       <mat-icon>arrow_forward_ios</mat-icon>
     </button>
   </div>
+
   <div class="controls">
-    <button mat-stroked-button color="accent" id="play-btn" (click)="play()"
+    <button mat-stroked-button color="accent" id="play-btn" (click)="play(2000)"
       *ngIf="!isPlaying"><mat-icon>play_circle_outline</mat-icon> Play all</button>
+
     <button mat-stroked-button color="accent" id="stop-btn" (click)="stop()"
       *ngIf="isPlaying"><mat-icon>stop_circle_outline</mat-icon>Stop</button>
-    </div>
+  </div>
 
-    <div class="pagination">
-      <button mat-stroked-button color="accent" id="prev-page" [ngClass]="{disabled:currentPage<=0}"
-        (click)="setCurrentPage(currentPage-1)">Previous</button>
-      <p>Page: {{currentPage+1}}/{{lastPage+1}}</p>
-      <button mat-stroked-button color="accent" id="next-page" [ngClass]="{disabled:currentPage>=lastPage}"
-        (click)="setCurrentPage(currentPage+1)">Next</button>
-    </div>
+  <div class="pagination">
+    <button mat-stroked-button color="accent" id="prev-page" [ngClass]="{disabled:currentPage<=0}"
+      (click)="setCurrentPage(currentPage-1)">Previous</button>
+
+    <p>Page: {{currentPage+1}}/{{lastPage+1}}</p>
+
+    <button mat-stroked-button color="accent" id="next-page" [ngClass]="{disabled:currentPage>=lastPage}"
+      (click)="setCurrentPage(currentPage+1)">Next</button>
+  </div>
+
 
 </div>

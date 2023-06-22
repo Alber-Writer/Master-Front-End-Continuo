@@ -1,7 +1,8 @@
 @use '@angular/material' as mat;
 
-$indigo-p: mat.define-palette(mat.$pink-palette);
-$accent : mat.get-color-from-palette($indigo-p,);
+$pink-p: mat.define-palette(mat.$pink-palette);
+$accent : mat.get-color-from-palette($pink-p);
+$accent-light : mat.get-color-from-palette($pink-p,200);
 
 .gallery {
   width: 100%;
@@ -11,7 +12,7 @@ $accent : mat.get-color-from-palette($indigo-p,);
   align-items: center;
   margin-bottom: 2rem;
 
-  .current-image {
+  .featured-image-section {
     overflow: hidden;
     max-width: 600px;
     height: 400px;
@@ -32,9 +33,16 @@ $accent : mat.get-color-from-palette($indigo-p,);
       bottom: 15px;
       right: 15px;
       display: flex;
+      flex-wrap: wrap;
+      max-width: 120px;
+      justify-content: center;
       gap:0.7rem;
       mat-icon{
         font-size: 1.3rem;
+      }
+      .zoom-level{
+        font-size: 0.7rem;
+        opacity: 0.8;
       }
     }
   }

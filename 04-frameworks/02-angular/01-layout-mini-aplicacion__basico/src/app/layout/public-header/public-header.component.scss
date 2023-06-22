@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
 
-$my-palette: mat.define-palette(mat.$indigo-palette);
+$indigo-p: mat.define-palette(mat.$indigo-palette);
 
 .public-header{
   width: 100%;
-  background: mat.get-color-from-palette($my-palette, 'darker');
-  color: mat.get-color-from-palette($my-palette, 'darker-contrast');
+  background: mat.get-color-from-palette($indigo-p, 'darker');
+  color: mat.get-color-from-palette($indigo-p, 'darker-contrast');
 
   display: flex;
   flex-flow: row;

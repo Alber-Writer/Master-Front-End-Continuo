@@ -14,9 +14,11 @@ export class AuthService {
 
   login$(username: string, password: string): Observable<boolean> {
     if (username === 'master8@lemoncode.net' && password === '12345678') {
-      this.logged$.next(true);
-      this.username = username;
-      this.setCacheLogin();
+      setTimeout(() => {//added to avoid other eager rxjs subscriptions triggers
+        this.logged$.next(true);
+        this.username = username;
+        this.setCacheLogin();
+      }, 2000);
       return of(true).pipe(delay(2000));
     }
     return of(false).pipe(delay(2000));
@@ -27,14 +29,14 @@ export class AuthService {
     this.removeCacheLogin();
   }
   isLogged$(): Observable<boolean> {
-    const [ logged, username ] = this.getCacheLogin();
-    if(logged === 'true' && username){
+    const [logged, username] = this.getCacheLogin();
+    if (logged === 'true' && username) {
       this.logged$.next(true);
       this.username = username;
     }
     return this.logged$.asObservable();
   }
-  /* Métodos cache localStorage solamente de prueba... sin token, son inseguros: */
+  /* localStorage cache methods as test... no token provided*/
   private setCacheLogin() {
     localStorage.setItem('logged', `${this.logged$.value}`);
     localStorage.setItem('username', `${this.username}`);

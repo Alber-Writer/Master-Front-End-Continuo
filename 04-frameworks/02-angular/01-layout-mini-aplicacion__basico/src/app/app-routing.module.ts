@@ -10,16 +10,28 @@ import { CrudComponent } from './crud/crud.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RotateImagesDirectiveComponent } from './rotate-images-directive/rotate-images-directive.component';
 
+import { guardRoutesGuard } from './guard-routes.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'gallery', component: GalleryComponent },
-  { path: 'crud', component: CrudComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'rotate', component: RotateImagesDirectiveComponent },
+  { path: 'home', title: 'Home', component: HomeComponent },
+  { path: 'login', title: 'Login', component: LoginComponent },
+  { path: 'about', title: 'About', component: AboutComponent },
+  {
+    path: 'p',
+    canActivate: [guardRoutesGuard],
+    children: [
+      { path: 'dashboard', title: 'Dashboard', component: DashboardComponent },
+      { path: 'gallery', title: 'Gallery', component: GalleryComponent },
+      { path: 'crud', title: 'Crud', component: CrudComponent },
+      { path: 'profile', title: 'Profile', component: ProfileComponent },
+      {
+        path: 'rotate',
+        title: 'Rotate images',
+        component: RotateImagesDirectiveComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

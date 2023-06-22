@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Image{
-  id: number,
-  src: string,
-  title: string
-}
+import { Image } from '../model/gallery-model';
 
 const imagesFeed:Image[] = [
   {

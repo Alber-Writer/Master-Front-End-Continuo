@@ -11,6 +11,7 @@ export class LoginComponent {
   username: string;
   password: string;
   showSpinner: boolean;
+
   constructor(private authService: AuthService, private router: Router) {
     this.username = '';
     this.password = '';
@@ -20,15 +21,13 @@ export class LoginComponent {
   checkCredentials() {
     this.showSpinner = true;
     this.authService.login$(this.username, this.password).subscribe((resp) => {
-      let canAccess;
       this.showSpinner = false;
-      canAccess = resp;
-      if (canAccess) {
-        this.router.navigate(['/dashboard']);
+      if (resp) {
+        this.router.navigate(['/p/dashboard']);
         return true;
       } else {
         alert(`Incorrect user/password.\n` +
-        `Please introduce valid credentials.`);
+        `Please enter valid credentials.`);
         return false;
       }
     });

@@ -33,7 +33,7 @@ export class RotateDirective implements OnInit {
     this.cssRotate(this.acc);
   }
 
-  @HostListener('click', ['$event'])//segundo arg recibe array binding con valores/evento
+  @HostListener('click', ['$event'])
   onMouseClick(event:MouseEvent) {
     const variation:number =  Number(this.step) || Number(this.defaultStep)
     this.cssRotate(event.shiftKey
