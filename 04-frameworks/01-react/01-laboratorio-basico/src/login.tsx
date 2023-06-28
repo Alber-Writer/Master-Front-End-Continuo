@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [username, setUsername] = React.useState("admin");//TODO: quit!
+  const [password, setPassword] = React.useState("test");//TODO: quit!
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (username === "admin" && password === "test") {
-      navigate("/list");
+      navigate("/list/lemoncode");
     } else {
       alert("User / password not valid, psst... admin / test");
     }
@@ -25,6 +25,7 @@ export const LoginPage: React.FC = () => {
           <div>
             <label>Username: </label>
             <input
+              autoComplete="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -32,6 +33,7 @@ export const LoginPage: React.FC = () => {
           <div>
             <label>Password: </label>
             <input
+              autoComplete="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

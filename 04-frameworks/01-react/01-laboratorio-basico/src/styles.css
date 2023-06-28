@@ -15,3 +15,14 @@
 .list-user-list-container > img {
   width: 80px;
 }
+
+.pagination{
+  /* display: flex;
+  gap: 1rem;
+  margin: 1rem; */
+}
+.page-nav{
+display: flex;
+gap: 1rem;
+margin: 1rem;
+}

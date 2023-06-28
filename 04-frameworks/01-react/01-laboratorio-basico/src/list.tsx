@@ -1,37 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
-interface MemberEntity {
-  id: string;
-  login: string;
-  avatar_url: string;
-}
+import React, { useEffect, useRef } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { PaginateFetchedCollection } from "./paginate-fetched";
+import { SearchByOrganization } from "./search-by-organization";
+import { useOrganizationName } from "./custom-hooks";
+import { MemberEntity } from "./model";
+import { Button } from "./components/button";
 
 export const ListPage: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
+  const {organizationName, setOrganizationName} = useOrganizationName();
+  const navigate = useNavigate();
 
-  React.useEffect(() => {
-    fetch(`https://api.github.com/orgs/lemoncode/members`)
-      .then((response) => response.json())
-      .then((json) => setMembers(json));
-  }, []);
 
+  const handleSearch = (orgName: string) => {
+    fetch(`https://api.github.com/orgs/${orgName.toLowerCase()}/members`)
+      .then((response) => {
+        if(response.ok) return response.json();
+         if(response.status === 404) alert(`${orgName} not found. Please enter a valid organization.`)
+          throw new Error("Error fetching members");
+      })
+      .then(json=> {
+        setOrganizationName(orgName);
+        navigate(`/list/${orgName}`)
+        return setMembers(json)})
+      .catch(() => {});
+  };
   return (
     <>
-      <h2>Hello from List page</h2>+{" "}
-      <div className="list-user-list-container">
-        <span className="list-header">Avatar</span>
-        <span className="list-header">Id</span>
-        <span className="list-header">Name</span>
-        {members.map((member) => (
-          <>
-            <img src={member.avatar_url} />
-            <span>{member.id}</span>
-            <Link to={`/detail/${member.login}`}>{member.login}</Link>
-          </>
-        ))}
-      </div>
-      <Link to="/detail">Navigate to detail page</Link>
+      <h2>Github users list per Organization</h2>
+      <SearchByOrganization sendDataToFatherFN={handleSearch}/>
+
+      <PaginateFetchedCollection
+        members={members}
+        organizationName={organizationName}
+      ></PaginateFetchedCollection>
+      <Button onClick={()=>alert('maclickao!!')}>Click</Button>
     </>
   );
 };
+
+//TODO: add MUI - check roboto font
+//History api fallback @webpack... not running

@@ -1,13 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { MemberDetailEntity } from "./model";
 
-interface MemberDetailEntity {
-  id: string;
-  login: string;
-  name: string;
-  company: string;
-  bio: string;
-}
 
 const createDefaultMemberDetail = () => ({
   id: "",
@@ -22,11 +16,17 @@ export const DetailPage: React.FC = () => {
     createDefaultMemberDetail()
   );
   const { id } = useParams();
+  const { urlOrganization } = useParams();
 
   React.useEffect(() => {
     fetch(`https://api.github.com/users/${id}`)
-      .then((response) => response.json())
-      .then((json) => setMember(json));
+      .then((response) => {
+        if(response.ok) return response.json()
+        throw new Error('Error fetching member detail')
+      }
+        )
+      .then((json) => setMember(json))
+      .catch(()=>{});
   }, []);
 
   return (
@@ -38,7 +38,7 @@ export const DetailPage: React.FC = () => {
       <p> name: {member.name}</p>
       <p> company: {member.company}</p>
       <p> bio: {member.bio}</p>
-      <Link to="/list">Back to list page</Link>
+      <Link to={`/list/${urlOrganization}`}>Back to list page</Link>
     </>
   );
 };
