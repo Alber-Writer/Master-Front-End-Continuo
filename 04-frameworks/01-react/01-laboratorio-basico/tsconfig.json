@@ -12,7 +12,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "ignoreDeprecations" : "5.0"
+    "ignoreDeprecations" : "5.0",
+    "baseUrl": "src",
+    "paths": {
+      "@/*":["*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

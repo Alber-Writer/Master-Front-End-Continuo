@@ -1,6 +1,7 @@
 import React from "react";
 import { MemberEntity } from "./model";
 import { Link, useParams } from "react-router-dom";
+import { routes } from "@/core/router";
 
 interface Props {
   children?: React.ReactNode;
@@ -19,7 +20,7 @@ export const UserListRows: React.FC<Props> = (props: Props) => {
           <React.Fragment key={member.id}>
             <img src={member.avatar_url} />
             <span>{member.id}</span>
-            <Link to={`/detail/${organization}/${member.login}`}>{member.login}</Link>
+            <Link to={routes.details(organization, member.login)}>{member.login}</Link>
           </React.Fragment>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { MemberDetailEntity } from "./model";
+import { MemberDetailEntity } from "../../model";
 
 
 const createDefaultMemberDetail = () => ({
@@ -11,7 +11,7 @@ const createDefaultMemberDetail = () => ({
   bio: "",
 });
 
-export const DetailPage: React.FC = () => {
+export const DetailScene: React.FC = () => {
   const [member, setMember] = React.useState<MemberDetailEntity>(
     createDefaultMemberDetail()
   );

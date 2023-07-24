@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { PaginateFetchedCollection } from "./paginate-fetched";
-import { SearchByOrganization } from "./search-by-organization";
-import { useOrganizationName } from "./custom-hooks";
-import { MemberEntity } from "./model";
-import { Button } from "./components/button";
+import { PaginateFetchedCollection } from "../../paginate-fetched";
+import { SearchByOrganization } from "../../search-by-organization";
+import { useOrganizationName } from "../../custom-hooks";
+import { MemberEntity } from "../../model";
+import { Button } from "../../components/button";
+import { routes } from "@/core/router";
 
-export const ListPage: React.FC = () => {
+export const ListScene: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
   const {organizationName, setOrganizationName} = useOrganizationName();
   const navigate = useNavigate();
@@ -21,7 +22,8 @@ export const ListPage: React.FC = () => {
       })
       .then(json=> {
         setOrganizationName(orgName);
-        navigate(`/list/${orgName}`)
+        // navigate(`/list/${orgName}`)
+        navigate(routes.list(orgName))
         return setMembers(json)})
       .catch(() => {});
   };

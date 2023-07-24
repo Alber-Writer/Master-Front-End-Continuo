@@ -1,16 +1,17 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { routes } from "@/core/router";
 
-export const LoginPage: React.FC = () => {
+export const LoginScene: React.FC = () => {
   const navigate = useNavigate();
   const [username, setUsername] = React.useState("admin");//TODO: quit!
   const [password, setPassword] = React.useState("test");//TODO: quit!
+  const currentPath = useLocation().pathname;
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (username === "admin" && password === "test") {
-      navigate("/list/lemoncode");
+      navigate(routes.list(currentPath || "lemoncode"));
     } else {
       alert("User / password not valid, psst... admin / test");
     }
