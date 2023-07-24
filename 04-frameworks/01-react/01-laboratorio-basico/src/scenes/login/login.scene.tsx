@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { routes } from "@/core/router";
+import { routes,profileContext } from "@/core";
 
 export const LoginScene: React.FC = () => {
   const navigate = useNavigate();
   const [username, setUsername] = React.useState("admin");//TODO: quit!
   const [password, setPassword] = React.useState("test");//TODO: quit!
   const currentPath = useLocation().pathname;
+  const profContext = useContext(profileContext)
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (username === "admin" && password === "test") {
-      navigate(routes.list(currentPath || "lemoncode"));
+      profContext.setProfile({username, isLogged:true});
+      navigate(currentPath !== "/" ? currentPath : routes.list("lemoncode"));
+      alert(profContext.profile.isLogged);
     } else {
-      alert("User / password not valid, psst... admin / test");
+      return alert("User / password not valid, psst... admin / test");
     }
   };
 

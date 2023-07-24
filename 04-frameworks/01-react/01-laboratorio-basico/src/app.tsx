@@ -3,10 +3,12 @@ import React from "react";
 import { LoginPage } from "@/scenes/login";
 import { ListPage } from "@/list";
 import { DetailPage } from "@/detail"; */
-import { RouterComponent } from "@/core/router";
+import { ProfileProvider, RouterComponent } from "@/core";
 
 export const App = () => {
   return (
+    <ProfileProvider>
       <RouterComponent/>    
+    </ProfileProvider>
   );
 };
