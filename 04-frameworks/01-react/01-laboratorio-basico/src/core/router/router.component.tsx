@@ -8,7 +8,6 @@ export const RouterComponent: React.FC = () => {
   const context = useContext(profileContext);
   const isUserLogged = context.profile.isLogged;
 
-
   return (
       <>
       {context.profile.username}, 

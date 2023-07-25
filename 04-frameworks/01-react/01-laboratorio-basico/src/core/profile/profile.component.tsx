@@ -29,7 +29,7 @@ interface Props {
 }
 
 export const ProfileProvider: React.FC<Props> = (props: Props) => {
-  const [profile, setProfile] = React.useState({username:"Guest", isLogged:false});
+  const [profile, setProfile] = React.useState<UserData>({username:"Guest", isLogged:false});
   return (
     <profileContext.Provider value={{ profile, setProfile }}>
       {props.children}

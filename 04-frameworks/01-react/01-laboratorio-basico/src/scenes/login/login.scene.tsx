@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { routes,profileContext } from "@/core";
+import classes from "./login.styles.css";
 
 export const LoginScene: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const LoginScene: React.FC = () => {
   return (
     <>
       <form onSubmit={handleNavigation}>
-        <h2>Hello from login page</h2>
+        <h2 className={classes.title}>Hello from login page</h2>
 
         <div>
           <div>
