@@ -1,7 +1,8 @@
 import React from "react";
-import { MemberEntity } from "./model";
 import { Link, useParams } from "react-router-dom";
+
 import { routes } from "@/core/router";
+import { MemberEntity } from "@/scenes/list/model";
 
 interface Props {
   children?: React.ReactNode;

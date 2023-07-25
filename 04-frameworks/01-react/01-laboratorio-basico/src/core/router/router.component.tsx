@@ -14,7 +14,7 @@ export const RouterComponent: React.FC = () => {
           <Route path={SWICHTROUTES.root} element={<LoginScene />} />
           <Route path={SWICHTROUTES.list} element={isUserLogged ?  <ListScene /> : <LoginScene />} />
           <Route path={SWICHTROUTES.details} element={isUserLogged ? <DetailScene /> : <LoginScene/>} />
-          <Route path={"*"} element={isUserLogged ? <ListScene /> : <LoginScene />} />//TODO: fix unknown paths
+          <Route path={"*"} element={isUserLogged ? <ListScene /> : <LoginScene />} />//TODO: fix unknown paths // que opcionalmente se pueda pasar un path a listScene?
         </Routes>
       </Router>
       

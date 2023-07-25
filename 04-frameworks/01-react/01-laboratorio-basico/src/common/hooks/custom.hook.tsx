@@ -1,3 +1,4 @@
+//TODO:cambiar nombre por useSomethig...
 import React from "react";
 import { useParams } from "react-router-dom";
 

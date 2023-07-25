@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { PaginateFetchedCollection } from "../../paginate-fetched";
-import { SearchByOrganization } from "../../search-by-organization";
-import { useOrganizationName } from "../../custom-hooks";
-import { MemberEntity } from "../../model";
+import { PaginateFetchedCollection } from "@/common/components/";
+import { SearchByOrganization } from "@/pods/";
+import { useOrganizationName } from "@/common/hooks";
+import { MemberEntity } from "./model";
 import { Button } from "@/components/button";
 import { routes } from "@/core/router";
 import { MainLayout } from "@/layout";

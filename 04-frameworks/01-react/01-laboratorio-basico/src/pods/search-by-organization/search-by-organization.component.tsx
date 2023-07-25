@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useOrganizationName } from "./custom-hooks";
+import { useOrganizationName } from "@/common/hooks";
 
 
 interface Props{

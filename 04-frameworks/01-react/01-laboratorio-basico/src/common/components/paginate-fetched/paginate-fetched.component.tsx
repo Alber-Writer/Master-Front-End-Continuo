@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import { MemberEntity } from "./model";
-import { UserListRows } from "./user-list-rows";
-import { ItemsPerPageSelector } from "./items-per-page-selector";
-import { usePagination } from "./custom-hooks";
+import { MemberEntity } from "@/scenes/list/model";
+import { UserListRows } from "@/pods/list/user-list-rows.component";
+import { ItemsPerPageSelector } from "@/common/components";
+import { usePagination } from "@/common/hooks";
 
 interface Props {
   children?: React.ReactNode;
