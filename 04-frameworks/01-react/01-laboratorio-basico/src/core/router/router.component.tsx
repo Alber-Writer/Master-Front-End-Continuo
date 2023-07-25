@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SWICHTROUTES } from "@/core/router";
-import { LoginScene, ListScene, DetailScene } from "@/scenes";
+import { LoginScene, ListScene, DetailScene, WrongPathScene } from "@/scenes";
 import { profileContext } from "@/core/profile";
 
 export const RouterComponent: React.FC = () => {
@@ -14,7 +14,7 @@ export const RouterComponent: React.FC = () => {
           <Route path={SWICHTROUTES.root} element={<LoginScene />} />
           <Route path={SWICHTROUTES.list} element={isUserLogged ?  <ListScene /> : <LoginScene />} />
           <Route path={SWICHTROUTES.details} element={isUserLogged ? <DetailScene /> : <LoginScene/>} />
-          <Route path={"*"} element={isUserLogged ? <ListScene /> : <LoginScene />} />//TODO: fix unknown paths // que opcionalmente se pueda pasar un path a listScene?
+          <Route path={"*"} element={isUserLogged ? <WrongPathScene /> : <LoginScene />} />
         </Routes>
       </Router>
       
