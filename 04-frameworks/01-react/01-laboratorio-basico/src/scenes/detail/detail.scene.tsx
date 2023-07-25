@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { MemberDetailEntity } from "../../model";
+import { MainLayout } from "@/layout";
 
 
 const createDefaultMemberDetail = () => ({
@@ -30,7 +31,7 @@ export const DetailScene: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <MainLayout>
       <h2>Hello from Detail page</h2>
       <h3>User Id: {id}</h3>
       <p> id: {member.id}</p>
@@ -39,6 +40,6 @@ export const DetailScene: React.FC = () => {
       <p> company: {member.company}</p>
       <p> bio: {member.bio}</p>
       <Link to={`/list/${urlOrganization}`}>Back to list page</Link>
-    </>
+    </MainLayout>
   );
 };

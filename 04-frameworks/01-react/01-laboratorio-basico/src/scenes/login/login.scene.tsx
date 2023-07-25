@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { routes,profileContext } from "@/core";
 import classes from "./login.styles.css";
+import { LoginLayout } from "@/layout";
 
 export const LoginScene: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const LoginScene: React.FC = () => {
   };
 
   return (
-    <>
+    <LoginLayout>
       <form onSubmit={handleNavigation}>
         <h2 className={classes.title}>Hello from login page</h2>
 
@@ -48,6 +49,6 @@ export const LoginScene: React.FC = () => {
 
         <button type="submit">Login</button>
       </form>
-    </>
+    </LoginLayout>
   );
 };

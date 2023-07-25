@@ -4,8 +4,9 @@ import { PaginateFetchedCollection } from "../../paginate-fetched";
 import { SearchByOrganization } from "../../search-by-organization";
 import { useOrganizationName } from "../../custom-hooks";
 import { MemberEntity } from "../../model";
-import { Button } from "../../components/button";
+import { Button } from "@/components/button";
 import { routes } from "@/core/router";
+import { MainLayout } from "@/layout";
 
 export const ListScene: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
@@ -28,7 +29,7 @@ export const ListScene: React.FC = () => {
       .catch(() => {});
   };
   return (
-    <>
+    <MainLayout>
       <h2>Github users list per Organization</h2>
       <SearchByOrganization sendDataToFatherFN={handleSearch}/>
 
@@ -37,7 +38,7 @@ export const ListScene: React.FC = () => {
         organizationName={organizationName}
       ></PaginateFetchedCollection>
       <Button onClick={()=>alert('maclickao!!')}>Click</Button>
-    </>
+    </MainLayout>
   );
 };
 

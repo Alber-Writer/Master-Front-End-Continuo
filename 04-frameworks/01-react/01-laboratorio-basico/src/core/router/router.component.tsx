@@ -9,9 +9,6 @@ export const RouterComponent: React.FC = () => {
   const isUserLogged = context.profile.isLogged;
 
   return (
-      <>
-      {context.profile.username}, 
-      {isUserLogged.toString()}
       <Router>
         <Routes>
           <Route path={SWICHTROUTES.root} element={<LoginScene />} />
@@ -20,6 +17,6 @@ export const RouterComponent: React.FC = () => {
           <Route path={"*"} element={isUserLogged ? <ListScene /> : <LoginScene />} />//TODO: fix unknown paths
         </Routes>
       </Router>
-      </>
+      
   );
 };
