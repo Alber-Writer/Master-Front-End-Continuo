@@ -1,19 +1,10 @@
-//TODO:cambiar nombre por useSomethig...
 import React from "react";
-import { useParams } from "react-router-dom";
-
-export const useOrganizationName = ()=>{
-  const {urlOrganization} = useParams();
-  const [organizationName, setOrganizationName] =
-  React.useState(urlOrganization);
-  return {organizationName, setOrganizationName};
-}
 
 export const usePagination = () => {
   const [pagIndex, setPagIndex] = React.useState(0);
   const [totalPages, setTotalPages] = React.useState(1);
-  const [membersAtPage, setMembersAtPage] = React.useState([]);
-  const [itemsPerPage, setItemsPerPage] = React.useState(3);
+  const [itemsAtPage, setItemsAtPage] = React.useState([]);
+  const [itemsQtyPerPage, setItemsQtyPerPage] = React.useState(3);
 
   const ListPagination = function <T>(
     arrayToPaginate: T[],
@@ -32,10 +23,10 @@ export const usePagination = () => {
     setPagIndex,
     totalPages,
     setTotalPages,
-    membersAtPage,
-    setMembersAtPage,
-    itemsPerPage,
-    setItemsPerPage,
+    itemsAtPage,
+    setItemsAtPage,
+    itemsQtyPerPage,
+    setItemsQtyPerPage,
     ListPagination,
   };
 };

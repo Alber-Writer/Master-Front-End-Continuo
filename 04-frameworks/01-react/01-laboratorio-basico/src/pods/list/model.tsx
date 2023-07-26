@@ -1,8 +1,8 @@
-export interface MemberEntity {
-  id: string;
-  login: string;
-  avatar_url: string;
-}
+// export interface MemberEntity {
+//   id: string;
+//   login: string;
+//   avatar_url: string;
+// }
 
 export interface MemberDetailEntity {
   id: string;

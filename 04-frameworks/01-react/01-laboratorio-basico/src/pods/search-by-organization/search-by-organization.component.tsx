@@ -1,28 +1,26 @@
-import React, { useRef } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useOrganizationName } from "@/common/hooks";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useOrgName } from "@/common/hooks";
 
 
 interface Props{
   children?: React.ReactNode;
-  sendDataToFatherFN : (organizationName: string)=>void;
+  handleSearch : (organizationName: string)=>void;
 }
 
 
 export const SearchByOrganization:React.FC<Props> = (props:Props)=>{
-  const {sendDataToFatherFN} = props;
-  const {organizationName, setOrganizationName} = useOrganizationName();
+  const {handleSearch} = props;
+  const {organizationName, setOrganizationName} = useOrgName();
   const { urlOrganization } = useParams();
-  const navigate = useNavigate();
   React.useEffect(() => {
-    sendDataToFatherFN(urlOrganization);
-    navigate(`/list/${organizationName}`);
+    handleSearch(urlOrganization);
   }, []);
   return(<>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
-          sendDataToFatherFN(organizationName);
+          handleSearch(organizationName);
         }}
         className="org-search"
       >

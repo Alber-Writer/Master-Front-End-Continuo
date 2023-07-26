@@ -1,12 +1,12 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { routes } from "@/core/router";
-import { MemberEntity } from "@/scenes/list/model";
+import { MemberEntityVM } from "@/pods/list/list.vm";
 
 interface Props {
   children?: React.ReactNode;
-  listToRender: MemberEntity[];
+  listToRender: MemberEntityVM[];
   organization: string;
 }
 export const UserListRows: React.FC<Props> = (props: Props) => {
@@ -19,7 +19,7 @@ export const UserListRows: React.FC<Props> = (props: Props) => {
         <span className="list-header">Name</span>
         {listToRender.map((member) => (
           <React.Fragment key={member.id}>
-            <img src={member.avatar_url} />
+            <img src={member.avatarUrl} />
             <span>{member.id}</span>
             <Link to={routes.details(organization, member.login)}>{member.login}</Link>
           </React.Fragment>

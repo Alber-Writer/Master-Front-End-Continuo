@@ -1,1 +1,1 @@
-export * from "./custom.hook";
+export * from "./useOrgName.hook";

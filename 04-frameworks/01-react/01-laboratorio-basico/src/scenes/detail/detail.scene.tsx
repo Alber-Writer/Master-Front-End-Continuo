@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { MemberDetailEntity } from "../list/model";
+import { MemberDetailEntity } from "../../pods/list/model";
 import { MainLayout } from "@/layout";
 
 

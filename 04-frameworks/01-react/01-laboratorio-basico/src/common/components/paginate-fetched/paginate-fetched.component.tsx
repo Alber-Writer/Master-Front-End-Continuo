@@ -1,50 +1,48 @@
 import React, { useRef } from "react";
-import { MemberEntity } from "@/scenes/list/model";
-import { UserListRows } from "@/pods/list/user-list-rows.component";
-import { ItemsPerPageSelector } from "@/common/components";
-import { usePagination } from "@/common/hooks";
+import { MemberEntityVM } from "@/pods/list/list.vm";
+import { UserListRows } from "@/pods/list/components/user-list-rows.component";
+import { ItemsPerPageSelector } from "./components/items-per-page-selector.component";
+import { usePagination } from "./hooks/usePagination.hooks";
 
 interface Props {
   children?: React.ReactNode;
-  organizationName: string;
-  members: MemberEntity[];
+  organizationName?: string;
+  items: MemberEntityVM[];//TODO: generic type! not MemberEntity
+  //TODO:make it agnostic
 }
+//TODO: agnostic organization name
 
 export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
-  const { organizationName, members } = props;
+  const { organizationName, items: members } = props;
   const {
     pagIndex,
     setPagIndex,
     totalPages,
     setTotalPages,
-    membersAtPage,
-    setMembersAtPage,
-    itemsPerPage,
-    setItemsPerPage,
+    itemsAtPage,
+    setItemsAtPage,
+    itemsQtyPerPage,
+    setItemsQtyPerPage,
     ListPagination,
   } = usePagination();
 
   React.useEffect(() => {
-    const { paginatedList, pagesQty } = ListPagination<MemberEntity>(
+    const { paginatedList, pagesQty } = ListPagination<MemberEntityVM>(
       members,
-      Number(itemsPerPage)
+      Number(itemsQtyPerPage)
     );
-    setMembersAtPage(paginatedList[pagIndex] ?? members);
+    setItemsAtPage(paginatedList[pagIndex] ?? members);
     setTotalPages(pagesQty);
     //First load has members.length = 0, next "if" checks it out to avoid render pageIndex=0.
-    if (members.length > 0 && itemsPerPage > members.length) {
+    if (members.length > 0 && itemsQtyPerPage > members.length) {
       setPagIndex(pagesQty - 1);
     }
-  }, [members, pagIndex, itemsPerPage]);
+  }, [members, pagIndex, itemsQtyPerPage]);
 
   return (
     <>
-      <p className="members-at-org">
-        {organizationName.toLocaleUpperCase()} has {members.length} members on
-        GitHub.
-      </p>
       <UserListRows
-        listToRender={membersAtPage}
+        listToRender={itemsAtPage}
         organization={organizationName}
       />
       <div className="pagination">
@@ -73,8 +71,8 @@ export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
           </button>
         </div>
         <ItemsPerPageSelector
-          itemsPerPage={itemsPerPage}
-          handleSetItemsPerPage={setItemsPerPage}
+          itemsPerPage={itemsQtyPerPage}
+          handleSetItemsPerPage={setItemsQtyPerPage}
         />
       </div>
     </>

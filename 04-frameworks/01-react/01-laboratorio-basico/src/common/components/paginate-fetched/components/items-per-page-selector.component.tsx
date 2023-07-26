@@ -9,7 +9,7 @@ export const ItemsPerPageSelector: React.FC<Props> = (props: Props) => {
   const initialItemsPerPage = useRef(itemsPerPage);
   const itemsPerPageOptions = [initialItemsPerPage.current, "5", "10", "15", "20"];
   return(<div>
-    <span>Show </span>
+    <span>Show up to </span>
     <select
       name=""
       id=""
