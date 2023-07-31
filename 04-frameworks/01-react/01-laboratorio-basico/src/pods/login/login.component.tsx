@@ -19,8 +19,7 @@ export const useCredentials = () => {
 };
 
 interface Props {
-  children?: React.ReactNode;
-  //loginHandler: ()=>void
+  children?: React.ReactNode,
 }
 
 export const LoginComponent: React.FC<Props> = (props: Props) => {
@@ -30,10 +29,6 @@ export const LoginComponent: React.FC<Props> = (props: Props) => {
   const currentPath = useLocation().pathname;
   const profContext = useContext(profileContext);
 
-  React.useEffect(()=>{
-    alert("Montado login")
-  }, []
-  )
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
