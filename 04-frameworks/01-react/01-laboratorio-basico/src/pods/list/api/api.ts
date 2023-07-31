@@ -1,7 +1,8 @@
 import { ApiModel } from "./api.model";
 
   export const getMembersbyOrg = (orgName: string):Promise<ApiModel[]> => {
-    return fetch(`https://api.github.com/orgs/${orgName.toLowerCase()}/members`)
+    // return fetch(`https://api.github.com/orgs/${orgName.toLowerCase()}/members`)
+    return fetch(`https://api.github.com/orgs/${orgName}/members`)
       .then((response) => {
         if (response.ok) return response.json();
         if (response.status === 404)

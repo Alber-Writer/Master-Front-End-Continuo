@@ -12,6 +12,7 @@ interface Props {
 }
 
 export const List: React.FC<Props> = (props: Props) => {
+
   const { members, setDataHandler, organizationName } = props;
   return (
     <>

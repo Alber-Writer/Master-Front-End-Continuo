@@ -19,8 +19,6 @@ interface Routes extends Omit<SwitchRoutes, "list" | "details"> {
 
 export const routes: Routes = {
   ...SWICHTROUTES,
-  list: (urlOrganization) => {
-    //alert(generatePath(SWICHTROUTES.list, urlOrganization));
-    return generatePath(SWICHTROUTES.list, {urlOrganization})},
+  list: (urlOrganization) => generatePath(SWICHTROUTES.list, {urlOrganization}),
   details: (urlOrganization, id) => generatePath(SWICHTROUTES.details, {urlOrganization, id}),
 }
