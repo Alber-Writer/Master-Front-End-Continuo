@@ -1,19 +1,16 @@
-import React, { useRef } from "react";
-import { MemberEntityVM } from "@/pods/list/list.vm";
-import { UserListRows } from "@/pods/list/components/user-list-rows.component";
+import React from "react";
+import { ListRows } from "@/pods/list/components/list-rows.component";
 import { ItemsPerPageSelector } from "./components/items-per-page-selector.component";
 import { usePagination } from "./hooks/usePagination.hooks";
 
 interface Props {
   children?: React.ReactNode;
-  organizationName?: string;
-  items: MemberEntityVM[];//TODO: generic type! not MemberEntity
-  //TODO:make it agnostic
+  backLinkParentKey?: string;//Key or param to navigate back, when accesing deeper layers
+  items: [];
 }
-//TODO: agnostic organization name
 
 export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
-  const { organizationName, items: members } = props;
+  const { backLinkParentKey: organizationName, items } = props;
   const {
     pagIndex,
     setPagIndex,
@@ -27,23 +24,24 @@ export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
   } = usePagination();
 
   React.useEffect(() => {
-    const { paginatedList, pagesQty } = ListPagination<MemberEntityVM>(
-      members,
+    const { paginatedList, pagesQty } = ListPagination(
+      items,
       Number(itemsQtyPerPage)
     );
-    setItemsAtPage(paginatedList[pagIndex] ?? members);
+    setItemsAtPage(paginatedList[pagIndex] ?? items);
     setTotalPages(pagesQty);
-    //First load has members.length = 0, next "if" checks it out to avoid render pageIndex=0.
-    if (members.length > 0 && itemsQtyPerPage > members.length) {
+    //First load has items.length = 0, below "if" checks it out, to avoid render pageIndex=0.
+    if (items.length > 0 && itemsQtyPerPage > items.length) {
       setPagIndex(pagesQty - 1);
     }
-  }, [members, pagIndex, itemsQtyPerPage]);
+  }, [items, pagIndex, itemsQtyPerPage]);
 
   return (
     <>
-      <UserListRows
+    {props.children}
+      <ListRows
         listToRender={itemsAtPage}
-        organization={organizationName}
+        backLinkParentKey={organizationName}
       />
       <div className="pagination">
         <div className="page-nav">

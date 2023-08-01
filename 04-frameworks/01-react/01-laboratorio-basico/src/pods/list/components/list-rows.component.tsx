@@ -7,10 +7,10 @@ import { MemberEntityVM } from "@/pods/list/list.vm";
 interface Props {
   children?: React.ReactNode;
   listToRender: MemberEntityVM[];
-  organization: string;
+  backLinkParentKey: string;
 }
-export const UserListRows: React.FC<Props> = (props: Props) => {
-  const { listToRender, organization } = props;
+export const ListRows: React.FC<Props> = (props: Props) => {
+  const { listToRender, backLinkParentKey } = props;
   return (
     <>
       <div className="list-user-list-container">
@@ -21,7 +21,7 @@ export const UserListRows: React.FC<Props> = (props: Props) => {
           <React.Fragment key={member.id}>
             <img src={member.avatarUrl} />
             <span>{member.id}</span>
-            <Link to={routes.details(organization, member.login)}>{member.login}</Link>
+            <Link to={routes.details(backLinkParentKey, member.login)}>{member.login}</Link>
           </React.Fragment>
         ))}
       </div>

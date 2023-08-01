@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { SWICHTROUTES, routes } from "@/core/router";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SWICHTROUTES } from "@/core/router";
 import { LoginScene, ListScene, DetailScene, WrongPathScene } from "@/scenes";
 import { profileContext } from "@/core/profile";
 
@@ -24,7 +24,6 @@ export const RouterComponent: React.FC = () => {
           path={SWICHTROUTES.root}
           element={isUserLogged ? <ListScene /> : <LoginScene />}
         />
-        //TODO: fix "/" path while logged
         <Route
           path={"*"}
           element={isUserLogged ? <WrongPathScene /> : <LoginScene />}

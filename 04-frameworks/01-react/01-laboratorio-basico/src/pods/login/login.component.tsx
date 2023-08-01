@@ -6,17 +6,7 @@ import { setCacheLogin } from "@/core/profile/profile-business/profile-cache";
 
 import classes from "./login.styles.css";
 import { checkAuth } from "./api/check-auth";
-
-export const useCredentials = () => {
-  const [username, setUsername] = React.useState("admin"); //TODO: quit!
-  const [password, setPassword] = React.useState("test"); //TODO: quit!
-  return {
-    username,
-    setUsername,
-    password,
-    setPassword,
-  };
-};
+import { useCredentials } from "./hooks/use-credentials.hooks";
 
 interface Props {
   children?: React.ReactNode,

@@ -9,5 +9,3 @@ export const removeCacheLogin = () => {
   localStorage.removeItem("isLogged");
   localStorage.removeItem("username");
 };
-
-//TODO:refactor cache methods
