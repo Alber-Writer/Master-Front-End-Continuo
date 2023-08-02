@@ -6,6 +6,7 @@ import { routes } from "@/core/router";
 
 import { List } from "./list.component";
 import { getMembersbyOrg } from "./list.repository";
+import {Box} from "@/common/components/box";
 
 
 export const ListContainer: React.FC = () => {
@@ -31,15 +32,14 @@ export const ListContainer: React.FC = () => {
   };
 
   return (
-    <>
+    <Box sx={{maxWidth:480}}>
       <List
         members={members}
         organizationName={organizationName ?? "lemoncode"}
         setDataHandler={handleSearch}
       />
-    </>
+    </Box>
   );
 };
 
-//TODO: add MUI
 //History api fallback @webpack... not running

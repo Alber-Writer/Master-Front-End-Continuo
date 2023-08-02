@@ -1,8 +1,12 @@
-body{
-  font-family: 'Roboto', sans-serif;
-}
 *, *::before, *::after{
   box-sizing: border-box;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+}
+#root{
+  margin: 0 auto;
 }
 .list-user-list-container {
   display: grid;

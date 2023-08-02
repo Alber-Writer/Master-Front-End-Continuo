@@ -3,6 +3,17 @@ import { useNavigate } from "react-router-dom";
 
 import { profileContext, routes } from "@/core";
 import { removeCacheLogin } from "@/core/profile/profile-business/profile-cache";
+import Box from "@mui/material/Box";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import { Button } from "@/common/components/button";
+
+import imgLogout from "@/assets/logout.svg"
+import classes from "./header.style.css"
+
+
 
 
 export const Header:React.FC = ()=>{
@@ -13,8 +24,19 @@ export const Header:React.FC = ()=>{
     profContext.setProfile({username:"", isLogged:false});
     navigate(routes.root)
   };
-  return(<>
-  Hello! {profContext.profile.username}, at this moment your loggin status is: {profContext.profile.isLogged ? `Logged` : `Unlogged`}
-  <div onClick={logout}>Logout</div>
-  </>)
+  return(
+  <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            React fake-app
+          </Typography>
+          <Button color="inherit">{profContext.profile.username}</Button>
+          <Button color="inherit" onClick={logout}>
+            <img src={imgLogout} alt="Logout icon" className={classes.logoutImg}/>
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  )
 }

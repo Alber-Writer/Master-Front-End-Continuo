@@ -1,9 +1,10 @@
 import React from "react";
+import ButtonMui, {ButtonProps} from "@mui/material/Button";
 
-export const Button:React.FC = ()=>{
-  return(
-    <></>
-  )
+interface Props extends ButtonProps{
+  onClick?:()=>void
 }
-
-//TODO: add MUI element inside this component
+export const Button:React.FC<Props> = (props:Props)=>{
+  const {children, ...rest} = props;
+  return (<ButtonMui {...rest}>{children}</ButtonMui>)
+}
