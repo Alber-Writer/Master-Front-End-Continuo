@@ -9,5 +9,3 @@ export const ListScene: React.FC = () => {
     </MainLayout>
   );
 };
-
-//History api fallback @webpack... not running

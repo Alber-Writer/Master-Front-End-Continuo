@@ -1,12 +1,13 @@
 import React from "react";
-import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
-import { useOrgName } from "@/common/hooks";
-import { MemberEntityVM } from "./list.vm";
-import { routes } from "@/core/router";
+import { useNavigate, useLocation } from "react-router-dom";
 
+import { routes } from "@/core/router";
+import {Box} from "@/common/components/box";
+import { useOrgName } from "@/common/hooks";
+
+import { MemberEntityVM } from "./list.vm";
 import { List } from "./list.component";
 import { getMembersbyOrg } from "./list.repository";
-import {Box} from "@/common/components/box";
 
 
 export const ListContainer: React.FC = () => {
@@ -32,7 +33,7 @@ export const ListContainer: React.FC = () => {
   };
 
   return (
-    <Box sx={{maxWidth:480}}>
+    <Box sx={{display:"flex", flexDirection:"column", alignItems:"strech", padding:"0.5rem"}}>
       <List
         members={members}
         organizationName={organizationName ?? "lemoncode"}
@@ -41,5 +42,3 @@ export const ListContainer: React.FC = () => {
     </Box>
   );
 };
-
-//History api fallback @webpack... not running

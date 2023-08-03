@@ -10,6 +10,7 @@ const createDefaultMemberDetail = ():MemberDetailEntityVM => ({
   name: "",
   company: "",
   bio: "",
+  avatarUrl: "",
 });
 
 export const DetailContainer:React.FC = ()=>{

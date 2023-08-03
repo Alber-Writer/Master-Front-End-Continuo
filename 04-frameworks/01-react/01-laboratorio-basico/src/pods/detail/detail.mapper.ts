@@ -8,4 +8,5 @@ export const mapApiModelToMemberDetailEntityVM = (member:MemberDetailEntityAM):M
   name: member.name,
   company: member.company,
   bio: member.bio,
+  avatarUrl: member.avatar_url,
 })

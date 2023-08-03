@@ -12,7 +12,9 @@ import ListItemMui from "@mui/material/ListItem";
 import ListItemTextMui from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
 
-import LinkMui from '@mui/material/Link'
+import LinkMui from "@mui/material/Link";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
 
 interface Props {
   children?: React.ReactNode;
@@ -22,21 +24,31 @@ interface Props {
 export const ListRows: React.FC<Props> = (props: Props) => {
   const { listToRender, backLinkParentKey } = props;
   return (
-    <Stack>
+    <Stack spacing={3} padding={1} >
       {listToRender.map((member) => (
-        <ListItemMui key={member.id} sx={{ maxWidth: 360}}>
-          <ListItemAvatar sx={{marginRight:"1rem"}}>
-              <Avatar src={member.avatarUrl} sx={{ width: 70, height: 70 }} />
-          </ListItemAvatar>              
-          <ListItemTextMui
-            primary={
-              <LinkMui component={Link} to={routes.details(backLinkParentKey, member.login)}>
-                {member.login}
-              </LinkMui>
-            }
-            secondary={`ID: ${member.id}`}
-          />
-        </ListItemMui>
+        <LinkMui
+          component={Link}
+          to={routes.details(backLinkParentKey, member.login)}
+          underline="none"
+          sx={{display: "flex", justifyContent:"strech"}}
+        >
+          <Card sx={{ width: "100%" }}>
+            <CardActionArea>
+              <ListItemMui key={member.id} sx={{ width: "100%" }}>
+                <ListItemAvatar sx={{ marginRight: "1rem" }}>
+                  <Avatar
+                    src={member.avatarUrl}
+                    sx={{ width: 70, height: 70 }}
+                  />
+                </ListItemAvatar>
+                <ListItemTextMui
+                  primary={<LinkMui>{member.login}</LinkMui>}
+                  secondary={`ID: ${member.id}`}
+                />
+              </ListItemMui>
+            </CardActionArea>
+          </Card>
+        </LinkMui>
       ))}
     </Stack>
   );

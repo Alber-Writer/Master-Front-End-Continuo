@@ -1,11 +1,17 @@
 import React from "react";
+
+import { usePagination } from "./hooks/usePagination.hooks";
+
 import { ListRows } from "@/pods/list/components/list-rows.component";
 import { ItemsPerPageSelector } from "./components/items-per-page-selector.component";
-import { usePagination } from "./hooks/usePagination.hooks";
+
+import { Button } from "@/common/components/button";
+import { Box } from "@/common/components/box";
 
 interface Props {
   children?: React.ReactNode;
-  backLinkParentKey?: string;//Key or param to navigate back, when accesing deeper layers
+  //Key or param to navigate back, when accesing deeper layers:
+  backLinkParentKey?: string; 
   items: [];
 }
 
@@ -30,7 +36,7 @@ export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
     );
     setItemsAtPage(paginatedList[pagIndex] ?? items);
     setTotalPages(pagesQty);
-    //First load has items.length = 0, below "if" checks it out, to avoid render pageIndex=0.
+    //First load has an items.length = 0. Next "if" checks it out, to avoid render pageIndex=0.
     if (items.length > 0 && itemsQtyPerPage > items.length) {
       setPagIndex(pagesQty - 1);
     }
@@ -38,26 +44,36 @@ export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-    {props.children}
+      {props.children}
       <ListRows
         listToRender={itemsAtPage}
         backLinkParentKey={organizationName}
       />
       <div className="pagination">
-        <div className="page-nav">
-          <button
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            margin: "1rem",
+          }}
+        >
+          <Button
+            variant="outlined"
             id="prev"
             onClick={() => {
               pagIndex <= 0 ? pagIndex : setPagIndex(pagIndex - 1);
             }}
           >
             Prev
-          </button>
+          </Button>
           <p>
             Page: {pagIndex + 1} / {totalPages}
           </p>
 
-          <button
+          <Button
+            variant="outlined"
             id="next"
             onClick={() => {
               pagIndex >= totalPages - 1
@@ -66,8 +82,8 @@ export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
             }}
           >
             Next
-          </button>
-        </div>
+          </Button>
+        </Box>
         <ItemsPerPageSelector
           itemsPerPage={itemsQtyPerPage}
           handleSetItemsPerPage={setItemsQtyPerPage}

@@ -10,22 +10,19 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Button } from "@/common/components/button";
 
-import imgLogout from "@/assets/logout.svg"
-import classes from "./header.style.css"
+import imgLogout from "@/assets/logout.svg";
+import classes from "./header.style.css";
 
-
-
-
-export const Header:React.FC = ()=>{
+export const Header: React.FC = () => {
   const profContext = useContext(profileContext);
-  const navigate = useNavigate()
-  const logout = ()=>{
+  const navigate = useNavigate();
+  const logout = () => {
     removeCacheLogin();
-    profContext.setProfile({username:"", isLogged:false});
-    navigate(routes.root)
+    profContext.setProfile({ username: "", isLogged: false });
+    navigate(routes.root);
   };
-  return(
-  <Box sx={{ flexGrow: 1 }}>
+  return (
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -33,10 +30,14 @@ export const Header:React.FC = ()=>{
           </Typography>
           <Button color="inherit">{profContext.profile.username}</Button>
           <Button color="inherit" onClick={logout}>
-            <img src={imgLogout} alt="Logout icon" className={classes.logoutImg}/>
+            <img
+              src={imgLogout}
+              alt="Logout icon"
+              className={classes.logoutImg}
+            />
           </Button>
         </Toolbar>
       </AppBar>
     </Box>
-  )
-}
+  );
+};

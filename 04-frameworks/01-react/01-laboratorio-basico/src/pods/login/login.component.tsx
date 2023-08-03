@@ -47,40 +47,37 @@ export const LoginComponent: React.FC<Props> = (props: Props) => {
   };
 
   return (
-      <Paper elevation={3} sx={{padding:"2rem",maxWidth:360, maxHeight:400}}>
-        <form onSubmit={handleLogin}>
-          <Stack
-            justifyContent="center"
-            alignItems="center"
-            spacing={5}
-          >
-            <h2 className={classes.title}>Login</h2>
-            <TextField
-              label="Username"
-              variant="standard"
-              autoComplete="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <TextField
-              label="Password"
-              variant="standard"
-              type="password"
-              autoComplete="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {isLoading ? (
-              <CircularProgress />
-            ) : (
-              <Button variant="contained" type="submit">
-                Login
-              </Button>
-            )}
-          </Stack>
-        </form>
-      </Paper>
+    <Paper
+      elevation={3}
+      sx={{ padding: "2rem", maxWidth: 360, maxHeight: 400 }}
+    >
+      <form onSubmit={handleLogin}>
+        <Stack justifyContent="center" alignItems="center" spacing={5}>
+          <h2 className={classes.title}>Login</h2>
+          <TextField
+            label="Username"
+            variant="standard"
+            autoComplete="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            label="Password"
+            variant="standard"
+            type="password"
+            autoComplete="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
+            <Button variant="contained" type="submit">
+              Login
+            </Button>
+          )}
+        </Stack>
+      </form>
+    </Paper>
   );
 };
-
-// TODO: manage css error fields

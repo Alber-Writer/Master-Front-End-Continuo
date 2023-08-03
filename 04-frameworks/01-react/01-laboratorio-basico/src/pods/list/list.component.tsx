@@ -13,7 +13,7 @@ export const List: React.FC<Props> = (props: Props) => {
   const { members, setDataHandler, organizationName } = props;
   return (
     <>
-      <h2>Github users list per Organization</h2>
+      <h2>GitHub member list per Organization</h2>
       <SearchByOrganization handleSearch={setDataHandler} />
 
       <PaginateFetchedCollection

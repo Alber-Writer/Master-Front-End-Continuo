@@ -4,4 +4,5 @@ export interface MemberDetailEntityVM {
   name: string;
   company: string;
   bio: string;
+  avatarUrl: string;
 }

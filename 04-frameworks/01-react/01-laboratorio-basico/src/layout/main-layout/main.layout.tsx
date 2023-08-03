@@ -10,7 +10,16 @@ export const MainLayout: React.FC<Props> = (props: Props) => {
   return (
     <>
       <Header />
-      <Box sx={{width:"100%", display:"flex", justifyContent:"center"}}>{props.children}</Box>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          padding: "1rem",
+        }}
+      >
+        {props.children}
+      </Box>
     </>
   );
 };
