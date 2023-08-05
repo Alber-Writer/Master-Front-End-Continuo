@@ -1,0 +1,32 @@
+[
+  {
+    "id": "000100",
+    "picUrl": "./assets/img-collection/cats-webp/victoria-naumenko-ymy29Y4J5Qs-unsplash.webp",
+    "title": "Cat 01"
+  },
+  {
+    "id": "000101",
+    "picUrl": "./assets/img-collection/cats-webp/chaiyaporn-atakampeewong-WSFY8g2CJDo-unsplash.webp",
+    "title": "Cat 02"
+  },
+  {
+    "id": "000102",
+    "picUrl": "./assets/img-collection/cats-webp/esteban-chinchilla-9m1OFDFAuss-unsplash.webp",
+    "title": "Cat 03"
+  },
+  {
+    "id": "000103",
+    "picUrl": "./assets/img-collection/cats-webp/federica-diliberto-KEXUeZIev10-unsplash.webp",
+    "title": "Cat 04"
+  },
+  {
+    "id": "000104",
+    "picUrl": "./assets/img-collection/cats-webp/mikhail-vasilyev-MEb2jandkbc-unsplash.webp",
+    "title": "Cat 05"
+  },
+  {
+    "id": "000105",
+    "picUrl": "./assets/img-collection/cats-webp/sajad-nori-s1puI2BWQzQ-unsplash.web",
+    "title": "Cat 06"
+  }
+]
