@@ -1,14 +1,13 @@
 import React from "react";
-import { ProductPageContainer } from "@/pods/product-page";
-import { AsideCartLayout } from "@/layout";
-import { CheckoutContainer } from "@/pods/";
+import { MainAndAsideLayout } from "@/layout";
+import { CartContainer, CheckoutContainer } from "@/pods/";
 
 export const CheckoutScene: React.FC = () => {
   return (
     <>
-      <AsideCartLayout>
+      <MainAndAsideLayout asideComponent={<CartContainer/>}>
         <CheckoutContainer />
-      </AsideCartLayout>
+      </MainAndAsideLayout>
       <h1>Checkout Scene</h1>
     </>
   );

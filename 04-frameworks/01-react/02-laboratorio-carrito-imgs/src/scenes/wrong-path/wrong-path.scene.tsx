@@ -1,16 +1,19 @@
 import React from "react";
 
-import { AsideCartLayout } from "@/layout";
+import { MainAndAsideLayout } from "@/layout";
 import { WrongPath } from "@/pods";
+import { Header } from "@/common/components";
 
 interface Props{
   children?: React.ReactNode;
 }
 
 export const WrongPathScene: React.FC<Props> = (props:Props) => {
-  return (
-    <AsideCartLayout>
+  return (<>
+    {/* <MainAndAsideLayout> */}
+    <Header/>
       <WrongPath />
-    </AsideCartLayout>
+    {/* </MainAndAsideLayout> */}
+  </>
   );
 };

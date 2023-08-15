@@ -1,14 +1,15 @@
 import React from "react";
 
 import { Box, Header } from "@/common/components";
-import { CartContainer as CartPod} from "@/pods";
 import { minHeight } from "@mui/system";
 
 interface Props {
   children?: React.ReactNode;
+  asideComponent: React.ReactNode;
 }
 
-export const AsideCartLayout: React.FC<Props> = (props: Props) => {
+export const MainAndAsideLayout: React.FC<Props> = (props: Props) => {
+  const {children, asideComponent} = props;
   return (
     <>
       <Header />
@@ -29,12 +30,12 @@ export const AsideCartLayout: React.FC<Props> = (props: Props) => {
             backgroundColor: "lightslategray",
           }}
         >
-          ---Products
-          {props.children}
+          {children}
         </Box>
-        <CartPod />
+        <Box sx={{ backgroundColor: "teal", flexBasis: "35vw" }}>
+          {asideComponent}
+        </Box>
       </Box>
-      ----AsideCartLayout
     </>
   );
 };
