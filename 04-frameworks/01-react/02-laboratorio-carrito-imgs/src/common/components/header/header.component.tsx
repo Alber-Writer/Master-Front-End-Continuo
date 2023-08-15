@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { profileContext, routes } from "@/core";
 import { removeCacheLogin } from "@/core/profile/profile-business/profile-cache";
@@ -28,6 +28,8 @@ export const Header: React.FC = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             React fake-app
           </Typography>
+          <Link to="/products/">Products</Link>
+          <Link to="/checkout/">Checkout</Link>
           <Button color="inherit">{profContext.profile.username}</Button>
           <Button color="inherit" onClick={logout}>
             <img

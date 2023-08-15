@@ -1,1 +1,1 @@
-export * from "./product-and-cart-layout";
+export * from "./aside-cart-layout";

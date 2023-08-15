@@ -2,22 +2,24 @@ import { generatePath } from "react-router-dom";
 
 interface SwitchRoutes {
   root: string;
-  productsAndCart: string;
+  products: string;
+  productsTease:string;
   checkout: string;
 }
 
 export const SWICHTROUTES: SwitchRoutes = {
   root: "/",
-  productsAndCart: "/products/:category/:pageId/",
+  products: "/products/:category/:pageId/",
+  productsTease: "/products/",//TODO: delete... only helper
   checkout: "/checkout/",
 };
 
-interface Routes extends Omit<SwitchRoutes, "productsAndCart"> {
-  productsAndCart: (category: string, pageId: string) => string;
+interface Routes extends Omit<SwitchRoutes, "products"> {
+  products: (category: string, pageId: string) => string;
 }
 
 export const routes: Routes = {
   ...SWICHTROUTES,
-  productsAndCart: (category, pageId) =>
-    generatePath(SWICHTROUTES.productsAndCart, { category, pageId }),
+  products: (category, pageId) =>
+    generatePath(SWICHTROUTES.products, { category, pageId }),
 };

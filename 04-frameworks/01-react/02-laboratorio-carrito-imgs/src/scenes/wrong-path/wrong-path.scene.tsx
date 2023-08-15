@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ProductAndCartLayout } from "@/layout";
+import { AsideCartLayout } from "@/layout";
 import { WrongPath } from "@/pods";
 
 interface Props{
@@ -9,8 +9,8 @@ interface Props{
 
 export const WrongPathScene: React.FC<Props> = (props:Props) => {
   return (
-    <ProductAndCartLayout>
+    <AsideCartLayout>
       <WrongPath />
-    </ProductAndCartLayout>
+    </AsideCartLayout>
   );
 };
