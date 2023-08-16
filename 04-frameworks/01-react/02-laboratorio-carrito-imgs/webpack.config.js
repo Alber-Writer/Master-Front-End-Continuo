@@ -20,7 +20,14 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-  },
+    host: 'localhost',
+    port: 8080,
+    hot: true,
+    proxy: {
+      '/api': 'http://localhost:3000',
+      '/img-collection': 'http://localhost:3000',
+  }
+},
   module: {
     rules: [
       {

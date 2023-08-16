@@ -1,14 +1,16 @@
 {
   "name": "react-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "This example takes the _03-list_ example as a starting point.",
   "main": "index.js",
   "scripts": {
-    "start": "run-p -l type-check:watch start:dev",
+    "start": "run-p -l type-check:watch start:dev start:server",
+    "start:server": "cd server && npm run mock-server",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "start:dev": "webpack-dev-server --mode development --open",
-    "build": "rimraf dist && webpack --mode development"
+    "build": "rimraf dist && webpack --mode development",
+    "postinstall": "cd ./server && npm install"
   },
   "author": "",
   "license": "ISC",
@@ -40,5 +42,6 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0"
-  }
+  },
+  "keywords": []
 }

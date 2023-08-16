@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { MemberDetailEntityVM } from "./product-page.vm";
+import { PictureEntityVM } from "./product-page.vm";
 
 import { Box } from "@/common/components/box";
 import { Avatar } from "@/common/components/avatar";
@@ -11,7 +11,7 @@ import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 
 interface Props {
-  member: MemberDetailEntityVM;
+  member: PictureEntityVM;
   urlOrganization: string;
   id: string;
 }
@@ -22,15 +22,10 @@ export const DetailComponent: React.FC<Props> = (props: Props) => {
     <Box>
       <Card sx={{ padding: "2rem", margin: "2rem auto", flexBasis: "100%" }}>
         <Stack direction="row" spacing={2} alignItems="center">
-          <Avatar src={member.avatarUrl} />
-          <h2>{member.login}</h2>
+          <Avatar src={"member.avatarUrl"} />
+          <h2>{"member.login"}</h2>
         </Stack>
-        <p>User Id: {id}</p>
-        <p> Id: {member.id}</p>
-        <p> Login: {member.login}</p>
-        <p> Name: {member.name}</p>
-        <p> Company: {member.company}</p>
-        <p> Bio: {member.bio}</p>
+
       </Card>
       <LinkMui component={Link} to={`/list/${urlOrganization}`}>
         Back to list page
