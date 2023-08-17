@@ -3,3 +3,7 @@ export interface PictureEntityVM {
   picUrl: string,
   title: string
 }
+
+export interface PictureEntityCheckedVM extends PictureEntityVM{
+  selected: boolean
+}

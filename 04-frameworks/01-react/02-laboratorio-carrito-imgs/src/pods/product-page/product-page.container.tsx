@@ -1,26 +1,33 @@
+import React, { useContext } from "react";
 import { Box } from "@/common/components";
-import { Checkbox } from "@mui/material";
-import React from "react";
+import { routes } from "@/core/router";
 import { pictureApi } from "./product-page.repository";
-import { PictureEntityVM } from "./product-page.vm";
+import { PictureEntityCheckedVM, PictureEntityVM } from "./product-page.vm";
+import { Link, useParams } from "react-router-dom";
+import { ProductNav } from "./components/products-nav";
+import { cartContext } from "@/core";
 
 interface Props {
   children?: React.ReactNode;
 }
 
 export const ProductPageContainer: React.FC<Props> = (props: Props) => {
-  const [loadedProducts, setLoadedProducts] = React.useState<PictureEntityVM[]>(
-    [
-      {
-        id: "",
-        picUrl: "",
-        title: "",
-      },
-    ]
-  ); //TODO: create function to fill empty loadedProducts
+  const [loadedProducts, setLoadedProducts] = React.useState<
+    PictureEntityCheckedVM[]
+  >([
+    {
+      id: "",
+      picUrl: "",
+      title: "",
+      selected: false,
+    },
+  ]); //TODO: create function to fill empty loadedProducts
+  const { pageId } = useParams();
+  const { cartProducts, setCartProducts } = useContext(cartContext);
+  const currentCart = React.useRef(cartProducts)
   React.useEffect(() => {
-    pictureApi("cats").then((res) => setLoadedProducts(res));
-  }, []);
+    pictureApi(pageId).then((res) => setLoadedProducts(res)); //TODO: ?? VM
+  }, [pageId, currentCart]);//TODO:seguir... cuando cart delete... uncheck
   return (
     <>
       <h3>ProductPageContainer</h3>
@@ -34,7 +41,21 @@ export const ProductPageContainer: React.FC<Props> = (props: Props) => {
             <span>Id: {product.id}</span>
             <label htmlFor={`check_${product.id}`}>
               Add to cart
-              <input id={`check_${product.id}`} type="checkbox" />
+              {product.id}
+              <input
+                id={`check_${product.id}`}
+                type="checkbox"
+                checked={product.selected}
+                onChange={(e) => {
+                  if(e.target.checked){
+                    product.selected = true;
+                    setCartProducts([...cartProducts, product])
+                  }else{
+                    product.selected = false;
+                    setCartProducts([...cartProducts.filter(elem=>elem.id !== product.id)])
+                  }
+                }}
+              />
             </label>
           </li>
         ))}
