@@ -1,10 +1,10 @@
 import React from "react";
-//TODO: cache?
 
 interface PictureInfo {
   id: string;
   picUrl: string;
   title: string;
+  price: number;
 }
 
 interface CartContext {
@@ -18,6 +18,7 @@ const createEmptyCart = (): CartContext => ({
       id: "",
       picUrl: "",
       title: "",
+      price: 10,
     },
   ],
   setCartProducts: (value) => {
@@ -32,13 +33,7 @@ interface Props {
 }
 
 export const CartProvider: React.FC<Props> = (props: Props) => {
-  const [cartProducts, setCartProducts] = React.useState<PictureInfo[]>([
-    {
-      id: "eeempty id",
-      picUrl: "eeempty picUrl",
-      title: "eeempty title",
-    },
-  ]);
+  const [cartProducts, setCartProducts] = React.useState<PictureInfo[]>([]);
 
   return (
     <cartContext.Provider value={{ cartProducts, setCartProducts }}>

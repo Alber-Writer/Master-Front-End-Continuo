@@ -19,15 +19,21 @@ export const ProductPageContainer: React.FC<Props> = (props: Props) => {
       id: "",
       picUrl: "",
       title: "",
+      price: 0,
       selected: false,
     },
   ]); //TODO: create function to fill empty loadedProducts
   const { pageId } = useParams();
   const { cartProducts, setCartProducts } = useContext(cartContext);
-  const currentCart = React.useRef(cartProducts)
   React.useEffect(() => {
-    pictureApi(pageId).then((res) => setLoadedProducts(res)); //TODO: ?? VM
-  }, [pageId, currentCart]);//TODO:seguir... cuando cart delete... uncheck
+    pictureApi(pageId).then((res) => {
+      const selectedColl = res.map((picture):PictureEntityCheckedVM=>{
+        const isChecked = cartProducts.some(elem=>elem.id === picture.id)
+        return {...picture, selected : isChecked}
+      })
+      setLoadedProducts(selectedColl)});
+  }, [pageId, cartProducts]);
+
   return (
     <>
       <h3>ProductPageContainer</h3>
@@ -35,6 +41,7 @@ export const ProductPageContainer: React.FC<Props> = (props: Props) => {
         {loadedProducts.map((product) => (
           <li key={product.id}>
             <h4>Title: {product.title}</h4>
+            <p className="productPrice">Price: {product.price}€</p>
             <Box sx={{ overflow: "hidden", height: 250, maxWidth: 250 }}>
               <img src={product.picUrl} alt="" height="300" />
             </Box>
@@ -54,12 +61,19 @@ export const ProductPageContainer: React.FC<Props> = (props: Props) => {
                     product.selected = false;
                     setCartProducts([...cartProducts.filter(elem=>elem.id !== product.id)])
                   }
-                }}
+                }
+              }
               />
             </label>
           </li>
         ))}
+        
       </ul>
     </>
   );
 };
+//TODO:Cart scroll independent from normal scroll
+//TODO:Add MUI components
+//TODO:Clean dependencies
+//TODO:Refactor components
+//TODO:Add forms on checkout page

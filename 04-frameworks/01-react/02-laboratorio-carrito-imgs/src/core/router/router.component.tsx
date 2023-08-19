@@ -11,11 +11,11 @@ export const RouterComponent: React.FC = () => {
       <Routes>
       cartContext
         <Route
-          path={SWICHTROUTES.products}
+          path={SWICHTROUTES.specificProducts}
           element={<ProductScene />}
         />
         <Route
-          path={SWICHTROUTES.productsTease}
+          path={SWICHTROUTES.generalProducts}
           element={<ProductScene />}
         />{/* TODO: delete... only helper */}
         <Route

@@ -6,6 +6,7 @@ const mapApiModelToPictureEntityVM = (picture:PictureEntityAM):PictureEntityVM=>
   id: picture.id,
   picUrl: picture.picUrl,
   title: picture.title,
+  price: picture.price,
 })
 
 

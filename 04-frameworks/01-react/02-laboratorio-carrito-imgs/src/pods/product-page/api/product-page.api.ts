@@ -1,5 +1,3 @@
-import catsJson from "./cats-imgs-api.json";
-import kittenJson from "./kitten-imgs-api.json";
 import { PictureEntityAM } from "./product-page.api.model";
 
 
