@@ -11,7 +11,6 @@ export const ProductScene: React.FC = () => {
         <ProductNav />
         <ProductPageContainer />
       </MainAndAsideLayout>
-      <h1>ProductsAndCartScene</h1>
     </>
   );
 };

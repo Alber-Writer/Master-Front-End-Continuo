@@ -28,7 +28,7 @@ export const ProductPageContainer: React.FC<Props> = (props: Props) => {
   React.useEffect(() => {
     pictureApi(pageId).then((res) => {
       const selectedColl = res.map((picture):PictureEntityCheckedVM=>{
-        const isChecked = cartProducts.some(elem=>elem.id === picture.id)
+        const isChecked = cartProducts.some(elem=>elem.id === picture.id);
         return {...picture, selected : isChecked}
       })
       setLoadedProducts(selectedColl)});

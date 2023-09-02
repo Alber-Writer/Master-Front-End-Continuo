@@ -22,7 +22,6 @@ export const Header: React.FC = () => {
     navigate(routes.root);
   };
   return (
-    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -40,6 +39,5 @@ export const Header: React.FC = () => {
           </Button>
         </Toolbar>
       </AppBar>
-    </Box>
   );
 };

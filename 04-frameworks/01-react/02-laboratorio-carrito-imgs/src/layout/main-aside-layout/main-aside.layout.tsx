@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Box, Header } from "@/common/components";
-import { minHeight } from "@mui/system";
 
 interface Props {
   children?: React.ReactNode;
@@ -9,32 +8,38 @@ interface Props {
 }
 
 export const MainAndAsideLayout: React.FC<Props> = (props: Props) => {
-  const {children, asideComponent} = props;
+  const { children, asideComponent } = props;
   return (
     <>
-      <Header />
+      <Box sx={{ width: "100%", height: "10vh",position:'fixed' }}>
+        <Header />
+      </Box>
       <Box
         sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          padding: 0,
-          alignItems: "stretch",
-          alignContent: "stretch",
-          margin: 0,
+          backgroundColor: "lightslategray",
+          width: "65%",
+          overflowY: "scroll",
+          maxHeight: "90vh",
+          position:"fixed",
+          bottom:0,
         }}
       >
-        <Box
-          sx={{
-            flexGrow: 2,
-            backgroundColor: "lightslategray",
-          }}
-        >
-          {children}
-        </Box>
-        <Box sx={{ backgroundColor: "teal", flexBasis: "35vw" }}>
-          {asideComponent}
-        </Box>
+        {children}
+      </Box>
+      <Box
+        sx={{
+          backgroundColor: "teal",
+          width: "35%",
+          position: "fixed",
+          height: "90vh",
+          right: 0,
+          bottom: 0,
+          display: "flex",
+          alignContent: "space-between",
+          flexDirection: "column",
+        }}
+      >
+        {asideComponent}
       </Box>
     </>
   );
