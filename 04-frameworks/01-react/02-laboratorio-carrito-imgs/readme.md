@@ -1,118 +1,36 @@
-# 04 Details
+# 🛒 React Laboratory practice: creating a ProductList+Cart
 
-## Summary
-
-This example takes the _03-list_ example as a starting point.
-
-We are going to show the detail of a Github user: for them
-we keep the id of the user we chose in the list,
-call the Github API to get its details, and display them in a component.
-display them in a component.
-
-## Step by Step Guide
-
-- First we copy the previous example, and do an _npm install_.
-
-```bash
-npm install
-```
-
-- If we want to see what kind of data we are going to handle, we can open the web browser and see what Github's Rest API returns.
-
-```bash
-https://api.github.com/users/brauliodiez
-```
-
-EXCERCISE OPTION
-> With what you have done in the previous examples you would be able to set up
-> this page by yourself, I advise you to pause this > exercise and try it out.
-> exercise and try it out.
-
-- We are going to create an interface to have typed to show the details of a member.
-
-_./src/detail.tsx_
-
-```diff
-import React from "react";
-import { Link } from "react-router-dom";
-
-+ interface MemberDetailEntity {
-+   id : string;
-+   login: string;
-+   name: string;
-+   company: string;
-+   bio: string;
-+ }
-+
-+ const createDefaultMemberDetail = () => ({
-+   id: '',
-+   login: '',
-+   name: '',
-+   company: '',
-+   bio: '',
-+ })
-+
-export const DetailPage: React.FC = () => {
-+  const [member, setMember] = React.useState<MemberDetailEntity>(createDefaultMemberDetail());
-  const { id } = useParams();
-
-  return (
-    <>
-      <h2>Hello from Detail page</h2>
-      <h3>User Id: {id}</h3>
-      <Link to="/list">Back to list page</Link>
-    </>
-  );
-};
-```
-
-- Let's do the data loading:
-
-_./src/detail.tsx_
-
-```diff
-export const DetailPage: React.FC = () => {
-  const [member, setMember] = React.useState<MemberDetailEntity>();
-  const { id } = useParams();
-
-+  React.useEffect(() => {
-+    fetch(`https://api.github.com/users/${id}`)
-+      .then((response) => response.json())
-+      .then((json) => setMember(json));
-+  }, []);
+**Context: This practice page is aimed at selling animal images of cats, kittens, and others... by using Scenes with Routing, and a Shared Context within the app.**
 
 
-  return (
-    <>
-      <h2>Hello from Detail page</h2>
-      <h3>User Id: {id}</h3>
-      <Link to="/list">Back to list page</Link>
-    </>
-  );
-};
-```
+### ⚛️ Technologies used in this project:
+- TypeScript 
+- React 
+- React Dom 
+- React Router-dom 
+- Material UI 
+- Webpack 
+- HTML and CSS 
+- Mock server (json-server) 
 
-- Let's show the data:
 
-_./src/detail.tsx_
+### 🛒 Main utilities practiced:
+- UseContext
+- Routing
+- Persistance layer (local storage)
+- Customized MUI theme and components
+- Modal dialog
+ 
 
-```diff
-export const DetailPage: React.FC = () => {
-  const [member, setMember] = React.useState<MemberDetailEntity>();
-  const { id } = useParams();
+### 🏗️ Architecture used:
+- PODs system
 
-  return (
-    <>
-      <h2>Hello from Detail page</h2>
--      <h3>User Id: {id}</h3>
-+      <p> id: {member.id}</p>
-+      <p> login: {member.login}</p>
-+      <p> name: {member.name}</p>
-+      <p> company: {member.company}</p>
-+      <p> bio: {member.bio}</p>
-      <Link to="/list">Back to list page</Link>
-    </>
-  );
-};
-```
+---
 
+### Install:
+Just run the script `npm install` at your terminal to get all required dependencies.
+Once installed, it will automatically run the "postinstall" script to do the same with the mock server.
+
+### Run in localhost:
+Launch it by entering the command `npm start`, which will initiate:
+ the Mock-server, `webpack` dev mode, and typescript type-checking to watch for any change.

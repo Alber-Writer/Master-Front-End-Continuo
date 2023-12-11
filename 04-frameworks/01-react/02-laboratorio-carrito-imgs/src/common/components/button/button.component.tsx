@@ -4,7 +4,8 @@ import ButtonMui, {ButtonProps} from "@mui/material/Button";
 interface Props extends ButtonProps{
   onClick?:()=>void
 }
+
 export const Button:React.FC<Props> = (props:Props)=>{
-  const {children, ...rest} = props;
-  return (<ButtonMui {...rest}>{children}</ButtonMui>)
+  const {children, onClick, ...rest} = props;
+  return (<ButtonMui onClick={onClick} {...rest}>{children}</ButtonMui>)
 }

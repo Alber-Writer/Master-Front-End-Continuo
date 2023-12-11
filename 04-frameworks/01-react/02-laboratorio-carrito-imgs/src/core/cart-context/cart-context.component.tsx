@@ -1,6 +1,6 @@
 import React from "react";
 
-interface PictureInfo {
+export interface PictureInfo {
   id: string;
   picUrl: string;
   title: string;
@@ -12,13 +12,13 @@ interface CartContext {
   setCartProducts: (value: PictureInfo[]) => void;
 }
 
-const createEmptyCart = (): CartContext => ({
+export const createEmptyCart = (): CartContext => ({
   cartProducts: [
     {
       id: "",
       picUrl: "",
       title: "",
-      price: 10,
+      price: 0,
     },
   ],
   setCartProducts: (value) => {
@@ -30,14 +30,15 @@ export const cartContext = React.createContext<CartContext>(createEmptyCart());
 
 interface Props {
   children?: React.ReactNode;
+  savedCartFromExternalStorage?: PictureInfo[]
 }
 
 export const CartProvider: React.FC<Props> = (props: Props) => {
-  const [cartProducts, setCartProducts] = React.useState<PictureInfo[]>([]);
-
+  const {children, savedCartFromExternalStorage} = props;
+  const [cartProducts, setCartProducts] = React.useState<PictureInfo[]>(savedCartFromExternalStorage || []);
   return (
     <cartContext.Provider value={{ cartProducts, setCartProducts }}>
-      {props.children}
+      {children}
     </cartContext.Provider>
   );
 };

@@ -3,37 +3,37 @@
     {
       "id": "000100",
       "picUrl": "http://localhost:3000/img-collection/cats-webp/victoria-naumenko-ymy29Y4J5Qs-unsplash.webp",
-      "title": "Cat 01",
-      "price": "10"
+      "title": "Firulais",
+      "price": "60"
     },
     {
       "id": "000101",
       "picUrl": "http://localhost:3000/img-collection/cats-webp/chaiyaporn-atakampeewong-WSFY8g2CJDo-unsplash.webp",
-      "title": "Cat 02",
-      "price": "10"
+      "title": "Sylvester",
+      "price": "50"
     },
     {
       "id": "000102",
       "picUrl": "http://localhost:3000/img-collection/cats-webp/esteban-chinchilla-9m1OFDFAuss-unsplash.webp",
-      "title": "Cat 03",
-      "price": "10"
+      "title": "Thor",
+      "price": "40"
     },
     {
       "id": "000103",
       "picUrl": "http://localhost:3000/img-collection/cats-webp/federica-diliberto-KEXUeZIev10-unsplash.webp",
-      "title": "Cat 04",
-      "price": "10"
+      "title": "Django",
+      "price": "30"
     },
     {
       "id": "000104",
       "picUrl": "http://localhost:3000/img-collection/cats-webp/mikhail-vasilyev-MEb2jandkbc-unsplash.webp",
-      "title": "Cat 05",
-      "price": "10"
+      "title": "Batman",
+      "price": "20"
     },
     {
       "id": "000105",
       "picUrl": "http://localhost:3000/img-collection/cats-webp/sajad-nori-s1puI2BWQzQ-unsplash.webp",
-      "title": "Cat 06",
+      "title": "Michonne",
       "price": "10"
     }
   ],
@@ -43,31 +43,31 @@
         "id": "000106",
         "picUrl": "http://localhost:3000/img-collection/kittens-webp/alvan-nee-ZCHj_2lJP00-unsplash.webp ",
         "title": "Kitten 07",
-        "price": "10"
+        "price": "60"
       },
       {
         "id": "000107",
         "picUrl": "http://localhost:3000/img-collection/kittens-webp/ilse-orsel-vmFEBIEz0hQ-unsplash.webp ",
         "title": "Kitten 08",
-        "price": "10"
+        "price": "50"
       },
       {
         "id": "000108",
         "picUrl": "http://localhost:3000/img-collection/kittens-webp/the-lucky-neko-MEQFUHzCtAo-unsplash.webp ",
         "title": "Kitten 09",
-        "price": "10"
+        "price": "40"
       },
       {
         "id": "000109",
         "picUrl": "http://localhost:3000/img-collection/kittens-webp/the-lucky-neko-tUTlUel_Nvs-unsplash.webp ",
         "title": "Kitten 10",
-        "price": "10"
+        "price": "30"
       },
       {
         "id": "000110",
         "picUrl": "http://localhost:3000/img-collection/kittens-webp/the-lucky-neko-uePn9YCTCY0-unsplash.webp ",
         "title": "Kitten 11",
-        "price": "10"
+        "price": "20"
       },
       {
         "id": "000111",

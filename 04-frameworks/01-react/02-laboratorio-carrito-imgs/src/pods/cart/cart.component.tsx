@@ -1,21 +1,52 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 
-// import { MemberDetailEntityVM } from "./detail.vm";
+import { useTheme } from "@mui/material/styles";
+import {
+Paper,
+  Table,
+  TableBody,
+  TableContainer
+} from "@mui/material";
 
-import { Box } from "@/common/components/box";
-import { Avatar } from "@/common/components/avatar";
+import { cartContext } from "@/core/cart-context";
+import { Box} from "@/common/components";
+import { CartProductRowComponent } from "./components/product-row.cart.component";
 
-import LinkMui from "@mui/material/Link";
-import Card from "@mui/material/Card";
-import Stack from "@mui/material/Stack";
-
-
-export const DetailComponent: React.FC = () => {
+interface Props{
+  children?: React.ReactNode;
+}
+export const CartComponent: React.FC<Props> = (props: Props) => {
+  const { children } = props;
+  const { primary } = useTheme().palette;
+  const { cartProducts, setCartProducts } = useContext(cartContext);
+  const removeItemFromCart = (index: number) => {
+    const updatedCart = [...cartProducts];
+    updatedCart.splice(index, 1);
+    setCartProducts(updatedCart);
+  };
   return (
-    <Box>
-          <h2>Detail...</h2>
-      
-    </Box>
+    <>
+      <Box
+        overflow={"auto"}
+        flexBasis={35}
+        flexGrow={1}
+        className="global-scrollbar"
+        color={primary.contrastText}
+        p={"1rem 1rem 1rem 0rem"}
+        m={"2rem 2rem 1rem 2rem"}
+      >
+        {!cartProducts?.length && "Empty Cart. Add some pictures ;)"}
+        <TableContainer component={Paper}>
+          <Table color={primary.contrastText}>
+            <TableBody color={primary.contrastText}>
+              {cartProducts.map((product, index) => (
+                <CartProductRowComponent product={product} index={index} removeItemHandler={removeItemFromCart} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+      {children}
+    </>
   );
 };

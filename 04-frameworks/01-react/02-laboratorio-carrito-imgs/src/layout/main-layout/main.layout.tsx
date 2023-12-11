@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Box, Header } from "@/common/components";
-import { minHeight } from "@mui/system";
+import { useTheme } from "@mui/material/styles";
 
 interface Props {
   children?: React.ReactNode;
@@ -9,25 +9,22 @@ interface Props {
 
 export const MainLayout: React.FC<Props> = (props: Props) => {
   const {children} = props;
+  const {primary} = useTheme().palette;
   return (
     <>
       <Header />
       <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          padding: 0,
-          alignItems: "stretch",
-          alignContent: "stretch",
-          margin: 0,
-        }}
+          width= "100%"
+          display= "flex"
+          justifyContent= "center"
+          padding= {0}
+          alignItems= "stretch"
+          alignContent= "stretch"
+          margin= {0}
       >
         <Box
-          sx={{
-            flexGrow: 2,
-            backgroundColor: "lightslategray",
-          }}
+        flexGrow={2}
+        bgcolor={primary.light}
         >
           {children}
         </Box>

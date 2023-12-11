@@ -1,13 +1,15 @@
 import React from "react";
 
-import { CartProvider, ProfileProvider, RouterComponent } from "@/core";
+import { CartProvider, CustomThemeProvider, RouterComponent } from "@/core";
+import { localDataManager as localCart } from "@/common/business/local-storage";
 
 export const App = () => {
+  const {getLocalData} = localCart('cart');
   return (
-    <ProfileProvider>
-      <CartProvider>
+    <CustomThemeProvider>
+      <CartProvider savedCartFromExternalStorage={getLocalData()}>
         <RouterComponent />
       </CartProvider>
-    </ProfileProvider>
+    </CustomThemeProvider>
   );
 };

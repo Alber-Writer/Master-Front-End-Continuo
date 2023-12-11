@@ -1,0 +1,8 @@
+.product__img{
+  height: 100%;
+  max-width: inherit;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0) scale(1.8);
+  z-index: -1;
+}

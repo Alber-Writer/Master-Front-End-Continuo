@@ -1,15 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Stack } from "@mui/system";
+
 import { routes } from "@/core/router";
+import { MenuItem } from "./menu-item";
+
 
 export const ProductNav: React.FC = () => {
+  
   return (
-    <>
-      Images:
-      <br />
-      <Link to={routes.products("images", "cats")}>Cats</Link>
-      <br />
-      <Link to={routes.products("images", "kittens")}>Kitten</Link>
-    </>
+    <Stack direction="row" spacing={2} padding={2}>
+      <MenuItem destination={routes.specificProducts("images", "cats")}>Cats</MenuItem>
+      <MenuItem destination={routes.specificProducts("images", "kittens")}>
+        Kittens
+      </MenuItem>
+    </Stack>
   );
 };
