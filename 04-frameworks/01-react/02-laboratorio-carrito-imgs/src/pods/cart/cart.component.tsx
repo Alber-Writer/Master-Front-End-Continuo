@@ -40,7 +40,7 @@ export const CartComponent: React.FC<Props> = (props: Props) => {
           <Table color={primary.contrastText}>
             <TableBody color={primary.contrastText}>
               {cartProducts.map((product, index) => (
-                <CartProductRowComponent product={product} index={index} removeItemHandler={removeItemFromCart} />
+                <CartProductRowComponent product={product} index={index} removeItemHandler={removeItemFromCart} key={index}/>
               ))}
             </TableBody>
           </Table>

@@ -4,8 +4,8 @@ import { CheckoutContainer } from "@/pods/";
 
 export const CheckoutScene: React.FC = () => {
   return (
-      <MainLayout>
-        <CheckoutContainer />
-      </MainLayout>
+    <MainLayout>
+      <CheckoutContainer />
+    </MainLayout>
   );
 };
