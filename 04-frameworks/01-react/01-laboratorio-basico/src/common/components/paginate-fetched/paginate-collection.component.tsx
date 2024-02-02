@@ -15,8 +15,9 @@ interface Props {
   items: [];
 }
 
-export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
-  const { backLinkParentKey: organizationName, items } = props;
+export const PaginateCollection: React.FC<Props> = (props: Props) => {
+  // const { backLinkParentKey: organizationName, items } = props;
+  const {  items } = props;
   const {
     pagIndex,
     setPagIndex,
@@ -40,6 +41,7 @@ export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
     if (items.length > 0 && itemsQtyPerPage > items.length) {
       setPagIndex(pagesQty - 1);
     }
+    
   }, [items, pagIndex, itemsQtyPerPage]);
 
   return (
@@ -47,17 +49,15 @@ export const PaginateFetchedCollection: React.FC<Props> = (props: Props) => {
       {props.children}
       <ListRows
         listToRender={itemsAtPage}
-        backLinkParentKey={organizationName}
+        // backLinkParentKey={organizationName}
       />
       <div className="pagination">
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            margin: "1rem",
-          }}
+          display= "flex"
+          flexDirection= "row"
+          justifyContent= "space-evenly"
+          alignItems= "center"
+          margin= "1rem"
         >
           <Button
             variant="outlined"

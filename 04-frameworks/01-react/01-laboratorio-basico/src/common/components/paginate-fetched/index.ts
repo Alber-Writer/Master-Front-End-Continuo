@@ -1,2 +1,2 @@
 
-export * from "./paginate-fetched.component";
+export * from "./paginate-collection.component";

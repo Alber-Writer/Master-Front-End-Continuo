@@ -1,12 +1,15 @@
 import { ApiModel } from "./api.model";
 
+const API_ORGS_URL = 'https://api.github.com/orgs/';
+
   export const getMembersbyOrg = (orgName: string):Promise<ApiModel[]> => {
-    return fetch(`https://api.github.com/orgs/${orgName}/members`)
+    return fetch(`${ API_ORGS_URL + orgName}/members`)
       .then((response) => {
         if (response.ok) return response.json();
         if (response.status === 404)
-          alert(`${orgName} not found. Please enter a valid organization.`);
+          alert(`${orgName} organization not found. Please enter a valid organization.`);
           return [];
       })
-      .catch(() => {});
+      .catch((e) => {console.log(e);
+      });
     }

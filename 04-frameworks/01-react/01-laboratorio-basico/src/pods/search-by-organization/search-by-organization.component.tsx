@@ -1,5 +1,4 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { FormEventHandler } from "react";
 
 import Button from "@mui/material/Button";
 
@@ -9,23 +8,21 @@ import { TextField } from "@/common/components/text-field";
 
 interface Props {
   children?: React.ReactNode;
-  handleSearch: (organizationName: string) => void;
 }
 
 export const SearchByOrganization: React.FC<Props> = (props: Props) => {
-  const { handleSearch } = props;
-  const { organizationName, setOrganizationName } = useOrgName();
-  const { urlOrganization } = useParams();
-  React.useEffect(() => {
-    handleSearch(urlOrganization);
-  }, []);
+  const { currentOrgName, setNewOrganization, triggerOrgSearch } = useOrgName();
+  const [newOrg, setNewOrg] = React.useState(currentOrgName)
+
+  const handleSubmit:FormEventHandler<HTMLDivElement> = (ev) => {
+    ev.preventDefault();
+    setNewOrganization(newOrg)
+    triggerOrgSearch();
+  }
   return (
       <Box
         component="form"
-        onSubmit={(ev) => {
-          ev.preventDefault();
-          handleSearch(organizationName);
-        }}
+        onSubmit={handleSubmit}
         display="flex"
         justifyContent="space-evenly"
         margin="2rem auto"
@@ -34,8 +31,8 @@ export const SearchByOrganization: React.FC<Props> = (props: Props) => {
         <TextField
           label="Organization"
           type="text"
-          value={organizationName}
-          onChange={(e) => setOrganizationName(e.target.value)}
+          value={newOrg}
+          onChange={(e) => setNewOrg(e.target.value)}
           size="small"
         />
         <Button variant="contained" type="submit">

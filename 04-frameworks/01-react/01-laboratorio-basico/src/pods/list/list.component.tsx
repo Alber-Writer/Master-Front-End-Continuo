@@ -1,25 +1,23 @@
 import React from "react";
-import { PaginateFetchedCollection } from "@/common/components/";
-import { SearchByOrganization } from "@/pods";
-import { MemberEntityVM } from "./list.vm";
+import { PaginateCollection } from "@/common/components/";
+import { useOrgMembers } from "./hooks/use-org-members.hook";
+import { SearchByOrganization } from "@/pods/search-by-organization";
 
 interface Props {
-  members: MemberEntityVM[];
-  organizationName: string;
-  setDataHandler: (orgName: string) => void;
+  children?: React.ReactNode;
 }
 
 export const List: React.FC<Props> = (props: Props) => {
-  const { members, setDataHandler, organizationName } = props;
+  const { currentOrg, membersList } = useOrgMembers();
   return (
     <>
-      <h2>GitHub member list per Organization</h2>
-      <SearchByOrganization handleSearch={setDataHandler} />
+      <h2>GitHub members list per Organization (displaying first 30)</h2>
+      <SearchByOrganization />
 
-      <PaginateFetchedCollection
-        items={members as []}
-        backLinkParentKey={organizationName}
-      ></PaginateFetchedCollection>
+      <PaginateCollection
+        items={membersList as []} //TODO: revisar esto del AS
+        backLinkParentKey={currentOrg}
+      ></PaginateCollection>
     </>
   );
 };

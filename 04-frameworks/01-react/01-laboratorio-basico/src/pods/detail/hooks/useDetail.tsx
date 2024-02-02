@@ -22,7 +22,8 @@ export const useDetail = ()=>{
   React.useEffect(() => {
     detailApi(id)
       .then((json) => setMember(json))
-      .catch(()=>{});
+      .catch((e)=>{console.log(e);
+      });
   }, []);
 
   return {member, id, urlOrganization}
