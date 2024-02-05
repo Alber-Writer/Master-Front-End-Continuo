@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-//TODO:quitar la palabra MEMBERS... solo tratamos la org aqui
 interface OrganizationContext {
   currentOrgName: string;
   searchNewOrg: (orgName: string) => void;

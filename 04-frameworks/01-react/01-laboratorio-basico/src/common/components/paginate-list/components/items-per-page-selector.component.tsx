@@ -4,13 +4,14 @@ import {Select} from "@/common//components/select";
 import { Box } from "@/common//components/box";
 
 import MenuItem from "@mui/material/MenuItem";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 interface Props {
   itemsPerPage: number;
   handleSetItemsPerPage: (value: number) => void;
 }
 export const ItemsPerPageSelector: React.FC<Props> = (props: Props) => {
-  const { itemsPerPage, handleSetItemsPerPage } = props;
+  const { itemsPerPage, handleSetItemsPerPage:propHandler } = props;
   const initialItemsPerPage = useRef(itemsPerPage);
   const itemsPerPageOptions = [
     initialItemsPerPage.current,
@@ -19,14 +20,13 @@ export const ItemsPerPageSelector: React.FC<Props> = (props: Props) => {
     "15",
     "20",
   ];
+  const handleSetItemsPerPage = (e:SelectChangeEvent<number>) => propHandler(Number(e.target.value))
   return (
     <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-      <span>Show up to</span>
+      <span>Display </span>
       <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
         value={itemsPerPage}
-        onChange={(e) => handleSetItemsPerPage(Number(e.target.value))}
+        onChange={handleSetItemsPerPage}
         size="small"
         sx={{margin:"0 0.5rem"}}
       >

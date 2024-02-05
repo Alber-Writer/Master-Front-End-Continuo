@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemMui from "@mui/material/ListItem";
 import ListItemTextMui from "@mui/material/ListItemText";
-import Stack from "@mui/material/Stack";
 import LinkMui from "@mui/material/Link";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -15,15 +14,12 @@ import { routes } from "@/core/router";
 import { useOrgName } from "@/common/hooks";
 
 interface Props {
-  children?: React.ReactNode;
-  listToRender: MemberEntityVM[];
+  member: MemberEntityVM;
 }
 export const ListRows: React.FC<Props> = (props: Props) => {
-  const { currentOrgName } = useOrgName();
-  const { listToRender } = props;
+  const { member } = props;
+    const { currentOrgName } = useOrgName();
   return (
-    <Stack spacing={3} padding={1}>
-      {listToRender.map((member) => (
         <LinkMui
           component={Link}
           to={routes.details(currentOrgName, member.login)}
@@ -49,7 +45,5 @@ export const ListRows: React.FC<Props> = (props: Props) => {
             </CardActionArea>
           </Card>
         </LinkMui>
-      ))}
-    </Stack>
   );
 };

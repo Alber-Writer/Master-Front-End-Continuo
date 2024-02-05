@@ -6,13 +6,13 @@ import { MemberEntityVM } from "../list.vm";
 
 export const useOrgMembers = ()=>{
   const [members, setMembers] = React.useState<MemberEntityVM[]>([]);
-  const { currentOrgName, setNewOrganization, triggerOrgSearch: doSearch } = useOrgName();
+  const { currentOrgName, setNewOrganization, triggerOrgSearch } = useOrgName();
 
   const handleSearch = (orgName: string = currentOrgName) => {
     getMembersbyOrg(orgName)
       .then((members) => {
         setNewOrganization(orgName);
-        doSearch();
+        triggerOrgSearch();
         setMembers(members);
       })
       .catch((e) => {

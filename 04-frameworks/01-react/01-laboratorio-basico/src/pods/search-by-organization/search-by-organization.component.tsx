@@ -19,6 +19,7 @@ export const SearchByOrganization: React.FC<Props> = (props: Props) => {
     setNewOrganization(newOrg)
     triggerOrgSearch();
   }
+  const handleSelectorChange = (e:React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => setNewOrg(e.target.value)
   return (
       <Box
         component="form"
@@ -32,7 +33,7 @@ export const SearchByOrganization: React.FC<Props> = (props: Props) => {
           label="Organization"
           type="text"
           value={newOrg}
-          onChange={(e) => setNewOrg(e.target.value)}
+          onChange={handleSelectorChange}
           size="small"
         />
         <Button variant="contained" type="submit">
