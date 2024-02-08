@@ -1,0 +1,50 @@
+{
+  "orders": [
+    {
+      "orderId": "240201_11",
+      "providerName": "Maquinarias S.A.",
+      "date": "2024-02-01",
+      "isSentToProvider": false,
+      "details": [
+        {
+          "detailId": "033",
+          "detailDescription": "Reactivos Maquinaria",
+          "price": 2345,
+          "detailIsAccomplished": false
+        },
+        {
+          "detailId": "034",
+          "detailDescription": "Recambios impresión",
+          "price": 135,
+          "detailIsAccomplished": true
+        },
+        {
+          "detailId": "035",
+          "detailDescription": "Soportes plataforma",
+          "price": 540,
+          "detailIsAccomplished": false
+        }
+      ]
+    },
+    {
+      "orderId": "240207_12",
+      "providerName": "Hnos Pérez S.A.",
+      "date": "2024-02-07",
+      "isSentToProvider": false,
+      "details": [
+        {
+          "detailId": "036",
+          "detailDescription": "Tóner BN",
+          "price": 100,
+          "detailIsAccomplished": false
+        },
+        {
+          "detailId": "037",
+          "detailDescription": "Rodamientos",
+          "price": 80,
+          "detailIsAccomplished": false
+        }
+      ]
+    }
+  ]
+}

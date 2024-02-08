@@ -1,0 +1,39 @@
+.box{
+  margin: 1rem;
+  padding: 1rem;
+}
+.flex-rows{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+  &>.fwidth{
+    flex-grow: 1;
+    width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+button.enable{
+  background-color: royalblue;
+  color: white;
+  &:hover{
+    background-color: rgb(95, 128, 228);
+  }
+}
+button.cancel{
+  &:hover{
+    background-color: indianred;
+    color: white;
+  }
+}
+button.validation{
+  background-color: lightseagreen;
+  color: white;
+  &:hover{
+    background-color:rgb(59, 196, 189)
+  }
+}
