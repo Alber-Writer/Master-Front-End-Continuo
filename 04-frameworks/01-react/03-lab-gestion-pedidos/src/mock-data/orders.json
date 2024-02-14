@@ -10,19 +10,19 @@
           "detailId": "033",
           "detailDescription": "Reactivos Maquinaria",
           "price": 2345,
-          "detailIsAccomplished": false
+          "isCompleted": false
         },
         {
           "detailId": "034",
           "detailDescription": "Recambios impresión",
           "price": 135,
-          "detailIsAccomplished": true
+          "isCompleted": true
         },
         {
           "detailId": "035",
           "detailDescription": "Soportes plataforma",
           "price": 540,
-          "detailIsAccomplished": false
+          "isCompleted": false
         }
       ]
     },
@@ -36,13 +36,13 @@
           "detailId": "036",
           "detailDescription": "Tóner BN",
           "price": 100,
-          "detailIsAccomplished": false
+          "isCompleted": false
         },
         {
           "detailId": "037",
           "detailDescription": "Rodamientos",
           "price": 80,
-          "detailIsAccomplished": false
+          "isCompleted": false
         }
       ]
     }

@@ -390,6 +390,7 @@ label {
   vertical-align: middle;
   margin-bottom: 4px;
   display: inline-block;
+  font-size: 0.9em;
 }
 
 input:not([type='checkbox']):not([type='radio']),
@@ -697,7 +698,7 @@ hr {
 table {
   border-collapse: collapse;
   margin-bottom: 10px;
-  width: 100%;
+  max-width: 100%;
   table-layout: fixed;
 }
 
@@ -724,8 +725,9 @@ tfoot {
 }
 
 tbody tr:nth-child(even) {
-  background-color: #efefef;
+  /* background-color: #efefef; */
   background-color: var(--background);
+  background-color: rgba(65, 105, 225, 0.062);
 }
 
 tbody tr:nth-child(even) button {

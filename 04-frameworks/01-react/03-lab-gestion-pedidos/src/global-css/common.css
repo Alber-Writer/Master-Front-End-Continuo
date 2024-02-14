@@ -24,6 +24,14 @@ button.enable{
     background-color: rgb(95, 128, 228);
   }
 }
+.detail-box{
+  border: 0.7px royalblue solid;
+  border-radius: 1rem;
+  width: 100%;
+}
+/* .detail-box.active-bg{
+  background-color: rgba(65, 105, 225, 0.062);
+} */
 button.cancel{
   &:hover{
     background-color: indianred;
@@ -35,5 +43,12 @@ button.validation{
   color: white;
   &:hover{
     background-color:rgb(59, 196, 189)
+  }
+}
+
+tbody tr td{
+  vertical-align: middle;
+  &>input{
+    margin-bottom: 0;
   }
 }
