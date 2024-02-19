@@ -11,10 +11,12 @@ export const DetailsForm = ({
   ) => FormEventHandler<HTMLFormElement> | undefined
 }) => {
   const [list, setList] = useState(initialList)
+  const [formResets, setFormResets] = useState<number>(0)
 
   useEffect(() => {
     setList(initialList)
-  }, [initialList])
+  }, [initialList, formResets])
+
 
   const handleDetailTasks =
     (id: string, propToUpdate: keyof IDetailTask) =>
@@ -38,9 +40,14 @@ export const DetailsForm = ({
         }),
       )
     }
+
+    const handleCancelDetailsTasks = (e:React.FormEvent<HTMLFormElement>)=>{
+      e.preventDefault()
+      setFormResets(reset=>++reset)
+    }
   return (
     <>
-      <form onSubmit={handleSubmit(list)}>
+      <form onSubmit={handleSubmit(list)} onReset={handleCancelDetailsTasks}>
         <div className="fwidth">
           <h4>Details in this order:</h4>
         </div>
@@ -50,7 +57,7 @@ export const DetailsForm = ({
               <button type="submit" className="validation">
                 Validate changes
               </button>
-              <button type="reset" className="cancel" onClick={() => {}}>
+              <button type="reset" className="cancel">
                 Cancel
               </button>
             </div>

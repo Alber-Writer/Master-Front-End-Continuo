@@ -18,7 +18,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = (
     }
   return (
     <>
-      <DetailsForm initialList={details} handleSubmit={handleSubmit} />
+      <DetailsForm initialList={details} handleSubmit={handleSubmit}/>
       {props.children}
     </>
   )
