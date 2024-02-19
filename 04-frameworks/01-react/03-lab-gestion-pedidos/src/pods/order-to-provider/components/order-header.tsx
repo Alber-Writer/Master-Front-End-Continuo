@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { IDetailTask } from '../api/order.AM.model'
+import { IDetailTask } from '../order.vm.model'
 import { useSupplierOrder } from '../hooks/use-supplier-order.hook'
 import { HeaderStaticInfo } from './header-fixed-info'
 
@@ -60,7 +60,6 @@ export const OrderHeader: React.FC<Props> = ({ children }: Props) => {
         {basicInfo.isSentToProvider}
       </div>
       {children && children}
-      {JSON.stringify(details)}
     </>
   )
 }

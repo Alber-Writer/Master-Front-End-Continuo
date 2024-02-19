@@ -1,19 +1,14 @@
-export interface IDetailTask {
-  readonly detailId: string
+export interface AMOrder {
+  orderId: string
+  providerName: string
+  date: string
+  isSentToProvider: boolean
+  details: AMDetails[]
+}
+
+export interface AMDetails {
+  detailId: string
   detailDescription: string
   price: number
   isCompleted: boolean
 }
-
-export interface IBasicInfo {
-  readonly orderId: string
-  readonly providerName: string
-  readonly date: string
-  isSentToProvider: boolean
-}
-
-export interface IDetailsTaskList {
-  details: IDetailTask[]
-}
-
-export type IOrder = IBasicInfo & IDetailsTaskList

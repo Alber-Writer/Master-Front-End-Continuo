@@ -1,5 +1,5 @@
 import React from 'react'
-import { IBasicInfo } from '../api/order.AM.model'
+import { IBasicInfo } from '../order.vm.model'
 
 interface IHeaderStaticInfoProps {
   info: IBasicInfo

@@ -1,5 +1,5 @@
 import { FormEventHandler, useEffect, useState } from 'react'
-import { IDetailTask } from '../api/order.AM.model'
+import { IDetailTask } from '../order.vm.model'
 
 export const DetailsForm = ({
   initialList,

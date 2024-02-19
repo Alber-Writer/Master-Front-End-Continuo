@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { orderToSupplierContext } from '../context/order-to-supplier.context'
-import { IDetailTask, IBasicInfo } from '../api/order.AM.model'
+import { IDetailTask, IBasicInfo } from '../order.vm.model'
 
 export const useSupplierOrder = () => {
   const {

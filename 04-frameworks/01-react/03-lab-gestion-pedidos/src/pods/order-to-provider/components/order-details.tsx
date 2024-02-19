@@ -1,5 +1,5 @@
 import { useSupplierOrder } from '../hooks/use-supplier-order.hook'
-import { IDetailTask } from '../api/order.AM.model'
+import { IDetailTask } from '../order.vm.model'
 import { DetailsForm } from './details-form'
 
 interface OrderDetailsProps {

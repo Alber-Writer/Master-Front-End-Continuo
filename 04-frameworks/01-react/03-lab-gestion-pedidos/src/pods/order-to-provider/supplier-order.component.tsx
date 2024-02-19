@@ -1,24 +1,28 @@
 import { useEffect } from 'react'
 import { OrderHeader } from './components/order-header'
 import { useSupplierOrder } from './hooks/use-supplier-order.hook'
-import { getOrder } from './api/get-order.api'
+import { getOrder } from './order-repository'
 import { OrderDetails } from './components/order-details'
 
 interface Props {
   children?: React.ReactNode
-  orderId: `${string}_${string}`
+  orderId: string
 }
 
-export const SupplierOrderComp: React.FC<Props> = ({ children, orderId }: Props) => {
+export const SupplierOrderComp: React.FC<Props> = ({
+  children,
+  orderId,
+}: Props) => {
   const { basicInfo, details, updateDetails, updateInfo } = useSupplierOrder()
 
   useEffect(() => {
-    const newOrder = getOrder(orderId)
+    getOrder(orderId).then((newOrder) => {
       if (newOrder) {
-        const {details, ...rest} = newOrder
-        updateInfo({...rest})
+        const { details, ...rest } = newOrder
+        updateInfo({ ...rest })
         updateDetails([...details])
-    }   
+      }
+    })
   }, [])
 
   return (
@@ -27,7 +31,7 @@ export const SupplierOrderComp: React.FC<Props> = ({ children, orderId }: Props)
         <h3>Order info:</h3>
         {children}
         <div>
-          {!basicInfo || !details || basicInfo.providerName === 'empty'? (
+          {!basicInfo || !details || basicInfo.providerName === 'empty' ? (
             'Order not found'
           ) : (
             <>
