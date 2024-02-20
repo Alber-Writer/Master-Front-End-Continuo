@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { orderToSupplierContext } from '../context/order-to-supplier.context'
+import { supplierOrderContext } from '../context/supplier-order.context'
 import { IDetailTask, IBasicInfo } from '../order.vm.model'
 
 export const useSupplierOrder = () => {
@@ -10,7 +10,7 @@ export const useSupplierOrder = () => {
     setDetails,
     totalPrice,
     setTotalPrice,
-  } = useContext(orderToSupplierContext)
+  } = useContext(supplierOrderContext)
 
   useEffect(() => {
     const priceValue = calculateTotalPrice(details)

@@ -1,4 +1,4 @@
-import { OrderToSupplierContextProvider } from './context/order-to-supplier.context'
+import { OrderToSupplierContextProvider } from './context/supplier-order.context'
 import { SupplierOrderComp } from './supplier-order.component'
 
 interface Props {

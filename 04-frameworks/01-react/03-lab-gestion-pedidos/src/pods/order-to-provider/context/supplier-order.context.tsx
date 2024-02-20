@@ -6,7 +6,7 @@ import {
   IOrder,
 } from '../order.vm.model'
 
-interface OrderToSupplierContext {
+interface supplierOrderContext {
 
   basicInfo: IBasicInfo
   setBasicInfo: (info: IBasicInfo) => void
@@ -36,7 +36,7 @@ const createEmptyOrder = (): IOrder => ({
 const emptyOrder = createEmptyOrder();
 const { date, isSentToProvider, orderId, providerName, details:detailsList } = emptyOrder
 
-export const orderToSupplierContext = createContext<OrderToSupplierContext>({
+export const supplierOrderContext = createContext<supplierOrderContext>({
   basicInfo: { date, isSentToProvider, orderId, providerName },
   setBasicInfo: (_info) => console.log('Provider must be applied'),
 
@@ -57,7 +57,7 @@ export const OrderToSupplierContextProvider: React.FC<Props> = ({
   const [totalPrice, setTotalPrice] = useState(0)
   const [basicInfo, setBasicInfo] = useState({date, isSentToProvider, orderId, providerName})
   const [details, setDetails] = useState(detailsList)
-  const context = orderToSupplierContext
+  const context = supplierOrderContext
   return (
     <context.Provider
       value={{

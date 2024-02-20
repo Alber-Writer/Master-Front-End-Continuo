@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { IDetailTask } from '../order.vm.model'
 import { useSupplierOrder } from '../hooks/use-supplier-order.hook'
 import { HeaderStaticInfo } from './header-fixed-info'
+import { SubmitOrderBtn } from './submit-order-btn'
 
 interface Props {
   children?: React.ReactNode
@@ -17,23 +18,9 @@ export const OrderHeader: React.FC<Props> = ({ children }: Props) => {
     setIsReadyToSend(percentageProgress >= 100)
   }, [details, percentageProgress])
 
-  const SUBMIT_BTN_TEXTS_TYPES = {
-    SUBMIT: 'Submit order',
-    ALREADY_SUBMITTED: 'Order already submitted',
-    DISABLED: '...order in progress',
-  }
-
   const progressToPercentage = (details: IDetailTask[]): number => {
-    const accomplished = details.filter((detail) => detail.isCompleted)
-    return Number(((accomplished.length * 100) / details.length).toFixed(2))
-  }
-
-  const submitButtonTexts = () => {
-    if (basicInfo.isSentToProvider)
-      return SUBMIT_BTN_TEXTS_TYPES.ALREADY_SUBMITTED
-    if (!basicInfo.isSentToProvider && isReadyToSend)
-      return SUBMIT_BTN_TEXTS_TYPES.SUBMIT
-    return SUBMIT_BTN_TEXTS_TYPES.DISABLED
+    const completed = details.filter((detail) => detail.isCompleted)
+    return Number(((completed.length * 100) / details.length).toFixed(2))
   }
 
   return (
@@ -49,12 +36,7 @@ export const OrderHeader: React.FC<Props> = ({ children }: Props) => {
             Order processing status:{' '}
             <input type="text" value={`${percentageProgress}%`} readOnly />
           </label>
-          <button
-            className={isReadyToSend ? 'validation' : ''}
-            disabled={!isReadyToSend || basicInfo.isSentToProvider}
-          >
-            {submitButtonTexts()}
-          </button>
+          <SubmitOrderBtn isReadyToSend={isReadyToSend} basicInfo={basicInfo} />
         </div>
 
         {basicInfo.isSentToProvider}
@@ -63,3 +45,4 @@ export const OrderHeader: React.FC<Props> = ({ children }: Props) => {
     </>
   )
 }
+
