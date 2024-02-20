@@ -1,9 +1,6 @@
 import { useEffect } from 'react'
-import { OrderHeader } from './components/order-header'
+import { OrderHeader, OrderDetails } from './components/'
 import { useSupplierOrder } from './hooks/use-supplier-order.hook'
-import { getOrder } from './order-repository'
-import { OrderDetails } from './components/order-details'
-
 interface Props {
   children?: React.ReactNode
   orderId: string
@@ -13,18 +10,11 @@ export const SupplierOrderComp: React.FC<Props> = ({
   children,
   orderId,
 }: Props) => {
-  const { basicInfo, details, updateDetails, updateInfo } = useSupplierOrder()
+  const { basicInfo, details, loadOrder } = useSupplierOrder()
 
   useEffect(() => {
-    getOrder(orderId).then((newOrder) => {
-      if (newOrder) {
-        const { details, ...rest } = newOrder
-        updateInfo({ ...rest })
-        updateDetails([...details])
-      }
-    })
+    loadOrder(orderId)
   }, [])
-
   return (
     <>
       <div className="flex-rows">

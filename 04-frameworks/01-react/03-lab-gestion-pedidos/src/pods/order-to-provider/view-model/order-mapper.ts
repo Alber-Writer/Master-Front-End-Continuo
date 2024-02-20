@@ -1,5 +1,5 @@
-import { AMDetails, AMOrder } from './api/order.AM.model'
-import { getOrder as getOrderAM } from './api/get-order.api'
+import { AMDetails, AMOrder } from '../api/order.AM.model'
+import { getOrder as getOrderAM } from '../api/get-order.api'
 import { IDetailTask, IOrder } from './order.vm.model'
 
 const mapApiModelToDetailsTaskVM = (details: AMDetails): IDetailTask => ({

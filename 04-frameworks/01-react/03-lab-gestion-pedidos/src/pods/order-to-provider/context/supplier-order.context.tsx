@@ -4,7 +4,7 @@ import {
   IBasicInfo,
   IDetailTask,
   IOrder,
-} from '../order.vm.model'
+} from '../view-model/order.vm.model'
 
 interface supplierOrderContext {
 

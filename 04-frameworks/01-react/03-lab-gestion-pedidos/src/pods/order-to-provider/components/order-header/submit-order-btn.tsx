@@ -1,4 +1,4 @@
-import { IBasicInfo } from '../order.vm.model';
+import { IBasicInfo } from '../../view-model/order.vm.model';
 
 export const SubmitOrderBtn = ({
   isReadyToSend, basicInfo,
