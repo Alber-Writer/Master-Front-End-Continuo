@@ -5,9 +5,11 @@ import { DetailRow } from './detail-row'
 
 export const DetailsForm = ({
   initialList,
+  editableMode,
   handleSubmit,
 }: {
   initialList: IDetailTask[]
+  editableMode: boolean
   handleSubmit: (
     newlist: IDetailTask[],
   ) => FormEventHandler<HTMLFormElement> | undefined
@@ -21,16 +23,18 @@ export const DetailsForm = ({
           <h4>Details in this order:</h4>
         </div>
         <div className="detail-box flex-rows">
-          <div id="detailsFormControls" className="box">
-            <div className="fwidth">
-              <button type="submit" className="validation">
-                Validate changes
-              </button>
-              <button type="reset" className="cancel">
-                Cancel
-              </button>
+          {editableMode && (
+            <div id="detailsFormControls" className="box">
+              <div className="fwidth">
+                <button type="submit" className="validation">
+                  Validate changes
+                </button>
+                <button type="reset" className="cancel">
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <table className="box fwidth">
             <thead>
@@ -44,6 +48,7 @@ export const DetailsForm = ({
               {list.map((d) => {
                 return (
                   <DetailRow
+                    editableMode={editableMode}
                     detail={d}
                     handleDetailTasks={handleDetailTasks}
                     key={d.detailId}
@@ -57,4 +62,3 @@ export const DetailsForm = ({
     </>
   )
 }
-

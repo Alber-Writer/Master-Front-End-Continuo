@@ -63,6 +63,9 @@ export const useSupplierOrder = () => {
       e.preventDefault()
       updateDetails(newsList)
     }
+  const submitOrder = () => {
+    updateInfo({ ...basicInfo, isSentToProvider: true })
+  }
 
   return {
     basicInfo,
@@ -72,5 +75,6 @@ export const useSupplierOrder = () => {
     percentageProgress,
     handleSubmitDetails,
     loadOrder,
+    submitOrder,
   }
 }

@@ -1,9 +1,10 @@
 import { IDetailTask } from '../../view-model/order.vm.model';
 
 export function DetailRow({
-  detail: d, handleDetailTasks,
+  detail: d, handleDetailTasks, editableMode
 }: {
   detail: IDetailTask;
+  editableMode:boolean,
   handleDetailTasks: (
     id: string,
     propToUpdate: keyof IDetailTask
@@ -16,7 +17,9 @@ export function DetailRow({
           type="checkbox"
           id={d.detailId + 'checkbox'}
           checked={d.isCompleted}
-          onChange={handleDetailTasks(d.detailId, 'isCompleted')} />
+          disabled={!editableMode}
+          onChange={handleDetailTasks(d.detailId, 'isCompleted')} 
+          />
         <span>{d.isCompleted ? 'Completed' : 'Pending'}</span>
       </td>
       <td>{d.detailDescription}</td>
@@ -29,6 +32,7 @@ export function DetailRow({
           step={0.01}
           pattern="^(\d{1,6})((.|,)(\d{0,2}))?"
           value={`${d.price}`}
+          disabled={!editableMode}
           onChange={handleDetailTasks(d.detailId, 'price')}
           required />
       </td>

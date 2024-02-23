@@ -8,10 +8,14 @@ interface OrderDetailsProps {
 export const OrderDetails: React.FC<OrderDetailsProps> = (
   props: OrderDetailsProps,
 ) => {
-  const { details, handleSubmitDetails } = useSupplierOrder()
+  const { basicInfo, details, handleSubmitDetails } = useSupplierOrder()
   return (
     <>
-      <DetailsForm initialList={details} handleSubmit={handleSubmitDetails}/>
+      <DetailsForm
+        initialList={details}
+        handleSubmit={handleSubmitDetails}
+        editableMode={!basicInfo.isSentToProvider}
+      />
       {props.children}
     </>
   )

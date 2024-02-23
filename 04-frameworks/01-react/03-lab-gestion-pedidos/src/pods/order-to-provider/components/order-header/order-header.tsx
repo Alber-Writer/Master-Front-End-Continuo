@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-import { IDetailTask } from '../../view-model/order.vm.model'
 import { useSupplierOrder } from '../../hooks/use-supplier-order.hook'
 import { HeaderStaticInfo } from './header-fixed-info'
 import { SubmitOrderBtn } from './submit-order-btn'
